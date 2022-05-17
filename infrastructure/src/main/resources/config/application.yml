@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: digimon
+  datasource:
+    cloud:
+      host: ${POSTGRES_CLOUD_HOST:localhost}
+      port: ${POSTGRES_CLOUD_PORT:5432}
+      db: ${POSTGRES_CLOUD_DB:postgres}
+
+    url: jdbc:postgresql://${spring.datasource.cloud.host}:${spring.datasource.cloud.port}/${spring.datasource.cloud.db}
+    username: ${POSTGRES_CLOUD_USER:postgres}
+    password: ${POSTGRES_CLOUD_PASSWORD:postgrespw}
+
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    show-sql: true

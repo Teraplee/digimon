@@ -1,0 +1,6 @@
+rootProject.name = 'digimon'
+include 'adapters:persistence'
+include 'adapters:web'
+include 'application'
+include 'infrastructure'
+
