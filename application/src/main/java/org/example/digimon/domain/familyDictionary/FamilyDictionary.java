@@ -18,6 +18,5 @@ public class FamilyDictionary {
     private String shortValue;
     private Date updatedAt;
     private String updatedBy;
-    private Set<Digimon> digimons;
 
 }

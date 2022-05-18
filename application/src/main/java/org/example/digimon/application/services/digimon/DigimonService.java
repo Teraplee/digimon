@@ -1,7 +1,6 @@
 package org.example.digimon.application.services.digimon;
 
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import org.example.digimon.application.ports.in.digimon.RemoveDigimonUseCase;
 import org.example.digimon.application.ports.in.digimon.SaveDigimonUseCase;
 import org.example.digimon.application.ports.in.digimon.SearchDigimonUseCase;
@@ -9,17 +8,24 @@ import org.example.digimon.application.ports.out.digimon.RemoveDigimonPort;
 import org.example.digimon.application.ports.out.digimon.SaveDigimonPort;
 import org.example.digimon.application.ports.out.digimon.SearchDigimonPort;
 import org.example.digimon.domain.digimon.Digimon;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class DigimonService implements RemoveDigimonUseCase, SaveDigimonUseCase, SearchDigimonUseCase {
 
     private final RemoveDigimonPort removeDigimonPort;
     private final SaveDigimonPort saveDigimonPort;
     private final SearchDigimonPort searchDigimonPort;
+
+    @Autowired
+    public DigimonService(RemoveDigimonPort removeDigimonPort, SaveDigimonPort saveDigimonPort, SearchDigimonPort searchDigimonPort) {
+        this.removeDigimonPort = removeDigimonPort;
+        this.saveDigimonPort = saveDigimonPort;
+        this.searchDigimonPort = searchDigimonPort;
+    }
 
 
     @Override

@@ -17,6 +17,5 @@ public class ClassDictionary {
     private String value;
     private Date updatedAt;
     private String updatedBy;
-    private Set<Digimon> digimons;
 
 }

@@ -1,6 +1,6 @@
 package org.example.digimon.dictionary.classDictionary;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,8 +29,5 @@ public class ClassDictionaryJpaEntity {
 
     @Column(name = "updated_by")
     private String updatedBy;
-
-    @OneToMany(mappedBy = "classDictionary")
-    private Set<DigimonJpaEntity> digimons;
 
 }

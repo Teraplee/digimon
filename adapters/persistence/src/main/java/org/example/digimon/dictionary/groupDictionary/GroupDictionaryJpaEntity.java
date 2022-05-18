@@ -1,6 +1,6 @@
 package org.example.digimon.dictionary.groupDictionary;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,8 +29,5 @@ public class GroupDictionaryJpaEntity {
 
     @Column(name = "updated_by")
     private String updatedBy;
-
-    @OneToMany(mappedBy = "groupDictionary")
-    private Set<DigimonJpaEntity> digimons;
 
 }

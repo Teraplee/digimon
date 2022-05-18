@@ -1,6 +1,6 @@
 package org.example.digimon.player;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -54,9 +54,5 @@ public class PlayerJpaEntity {
             inverseJoinColumns = @JoinColumn(name = "digimon_id"))
     private Set<DigimonJpaEntity> digimons;
 
-    @ManyToMany
-    @JoinTable(name = "duel_players",
-            joinColumns = @JoinColumn(name = "player_id"),
-            inverseJoinColumns = @JoinColumn(name = "duel_id"))
-    private Set<DuelJpaEntity> duels;
+
 }

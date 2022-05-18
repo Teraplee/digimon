@@ -1,6 +1,5 @@
 package org.example.digimon.digimon;
 
-import lombok.RequiredArgsConstructor;
 import org.example.digimon.application.ports.out.digimon.RemoveDigimonPort;
 import org.example.digimon.application.ports.out.digimon.SaveDigimonPort;
 import org.example.digimon.application.ports.out.digimon.SearchDigimonPort;
@@ -11,20 +10,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@RequiredArgsConstructor
 @Service
 public class DigimonPersistenceAdapter implements RemoveDigimonPort, SaveDigimonPort, SearchDigimonPort {
 
     private final DigimonJpaRepository digimonJpaRepository;
     private final DigimonJpaMapper digimonJpaMapper;
 
+    public DigimonPersistenceAdapter(DigimonJpaRepository digimonJpaRepository, DigimonJpaMapper digimonJpaMapper) {
+        this.digimonJpaRepository = digimonJpaRepository;
+        this.digimonJpaMapper = digimonJpaMapper;
+    }
+
     @Override
     public void remove(Long id) {
-
-        Optional<DigimonJpaEntity> optionalDigimonJpaEntity = digimonJpaRepository.findById(id);
-        DigimonJpaEntity digimonJpaEntity = optionalDigimonJpaEntity.orElse(null);
-        digimonJpaRepository.deleteById(id);
-
+        try {
+            digimonJpaRepository.deleteById(id);
+        } catch (Exception e) {
+            System.out.println("Exception: " + e.getMessage());
+        }
     }
 
     @Override
@@ -43,16 +46,13 @@ public class DigimonPersistenceAdapter implements RemoveDigimonPort, SaveDigimon
     @Override
     public Digimon findById(Long id) {
 
-        DigimonJpaEntity digimonJpaEntity = null;
-
         try {
-            digimonJpaEntity = digimonJpaRepository.findById(id).get();
+            DigimonJpaEntity digimonJpaEntity = digimonJpaRepository.findById(id).get();
+            return digimonJpaMapper.fromJpaEntity(digimonJpaEntity);
         } catch (Exception e) {
             System.out.println("Exception: " + e.getMessage());
         }
-
-        return digimonJpaMapper.fromJpaEntity(digimonJpaEntity);
-
+        return null;
     }
 
     @Override

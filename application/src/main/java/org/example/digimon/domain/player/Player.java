@@ -25,6 +25,5 @@ public class Player {
     private Date updatedAt;
     private String updatedBy;
     private Set<Digimon> digimons;
-    private Set<Duel> duels;
 
 }

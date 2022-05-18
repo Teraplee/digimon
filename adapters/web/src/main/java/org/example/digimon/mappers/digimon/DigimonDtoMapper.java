@@ -7,21 +7,15 @@ import org.example.digimon.mappers.classDictionary.ClassDictionaryDtoMapper;
 import org.example.digimon.mappers.familyDictionary.FamilyDictionaryDtoMapper;
 import org.example.digimon.mappers.groupDictionary.GroupDictionaryDtoMapper;
 import org.example.digimon.mappers.typeDictionary.TypeDictionaryDtoMapper;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
+import org.mapstruct.*;
 
-@Mapper(uses = {TypeDictionaryDtoMapper.class, ClassDictionaryDtoMapper.class,
-        GroupDictionaryDtoMapper.class, FamilyDictionaryDtoMapper.class})
+@Mapper(componentModel = "spring", uses = {TypeDictionaryDtoMapper.class, ClassDictionaryDtoMapper.class,
+        GroupDictionaryDtoMapper.class, FamilyDictionaryDtoMapper.class}, injectionStrategy = InjectionStrategy.FIELD)
+@MapperConfig(mappingInheritanceStrategy = MappingInheritanceStrategy.AUTO_INHERIT_ALL_FROM_CONFIG)
 public interface DigimonDtoMapper {
 
-    @Mapping(target = "typeDictionary", source = "typeDictionaryDtoIn")
-    @Mapping(target = "classDictionary", source = "classDictionaryDtoIn")
-    @Mapping(target = "groupDictionary", source = "groupDictionaryDtoIn")
     Digimon fromDtoIn(DigimonDtoIn dtoIn);
 
-    @Mapping(target = "typeDictionaryDtoOut", source = "typeDictionary")
-    @Mapping(target = "classDictionaryDtoOut", source = "classDictionary")
-    @Mapping(target = "groupDictionaryDtoOut", source = "groupDictionary")
     DigimonDtoOut toDtoOut(Digimon dtoOut);
 
 }

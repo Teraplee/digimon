@@ -1,6 +1,6 @@
 package org.example.digimon.dictionary.familyDictionary;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,10 +32,5 @@ public class FamilyDictionaryJpaEntity {
     @Column(name = "updated_by")
     private String updatedBy;
 
-    @ManyToMany
-    @JoinTable(name = "digimon_families_dictionary",
-            joinColumns = @JoinColumn(name = "family_id"),
-            inverseJoinColumns = @JoinColumn(name = "digimon_id"))
-    private Set<DigimonJpaEntity> digimons;
 
 }

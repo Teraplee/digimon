@@ -4,8 +4,11 @@ import org.example.digimon.digimon.DigimonJpaMapper;
 import org.example.digimon.domain.familyDictionary.FamilyDictionary;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
+import org.mapstruct.MapperConfig;
+import org.mapstruct.MappingInheritanceStrategy;
 
-@Mapper(componentModel = "spring", uses = {DigimonJpaMapper.class}, injectionStrategy = InjectionStrategy.FIELD)
+@Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.FIELD)
+@MapperConfig(mappingInheritanceStrategy = MappingInheritanceStrategy.AUTO_INHERIT_ALL_FROM_CONFIG)
 public interface FamilyDictionaryJpaMapper {
 
     FamilyDictionary fromJpaEntity(FamilyDictionaryJpaEntity jpaEntity);

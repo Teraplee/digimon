@@ -6,8 +6,9 @@ spring:
       host: ${POSTGRES_CLOUD_HOST:localhost}
       port: ${POSTGRES_CLOUD_PORT:5432}
       db: ${POSTGRES_CLOUD_DB:postgres}
+      schema: ${POSTGRES_CLOUD_SCHEMA:digimon}
 
-    url: jdbc:postgresql://${spring.datasource.cloud.host}:${spring.datasource.cloud.port}/${spring.datasource.cloud.db}
+    url: jdbc:postgresql://${spring.datasource.cloud.host}:${spring.datasource.cloud.port}/${spring.datasource.cloud.db}?currentSchema=${spring.datasource.cloud.schema}
     username: ${POSTGRES_CLOUD_USER:postgres}
     password: ${POSTGRES_CLOUD_PASSWORD:postgrespw}
 
