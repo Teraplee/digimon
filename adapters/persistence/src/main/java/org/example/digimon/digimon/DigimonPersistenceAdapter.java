@@ -1,5 +1,6 @@
 package org.example.digimon.digimon;
 
+import lombok.RequiredArgsConstructor;
 import org.example.digimon.application.ports.out.digimon.RemoveDigimonPort;
 import org.example.digimon.application.ports.out.digimon.SaveDigimonPort;
 import org.example.digimon.application.ports.out.digimon.SearchDigimonPort;
@@ -8,18 +9,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
 
 @Service
+@RequiredArgsConstructor
 public class DigimonPersistenceAdapter implements RemoveDigimonPort, SaveDigimonPort, SearchDigimonPort {
 
     private final DigimonJpaRepository digimonJpaRepository;
     private final DigimonJpaMapper digimonJpaMapper;
-
-    public DigimonPersistenceAdapter(DigimonJpaRepository digimonJpaRepository, DigimonJpaMapper digimonJpaMapper) {
-        this.digimonJpaRepository = digimonJpaRepository;
-        this.digimonJpaMapper = digimonJpaMapper;
-    }
 
     @Override
     public void remove(Long id) {
@@ -32,36 +29,32 @@ public class DigimonPersistenceAdapter implements RemoveDigimonPort, SaveDigimon
 
     @Override
     public Digimon save(Digimon digimon) {
-
-        if (digimon == null) {
+        try {
+            return digimonJpaMapper.fromJpaEntity(digimonJpaRepository.save(digimonJpaMapper.toJpaEntity(digimon)));
+        }
+        catch (Exception e) {
+            System.out.println("Exception: " + e.getMessage());
             return null;
         }
-
-        DigimonJpaEntity digimonJpaEntity = digimonJpaMapper.toJpaEntity(digimon);
-        digimonJpaRepository.save(digimonJpaEntity);
-        return digimonJpaMapper.fromJpaEntity(digimonJpaEntity);
-
     }
 
     @Override
     public Digimon findById(Long id) {
-
         try {
-            DigimonJpaEntity digimonJpaEntity = digimonJpaRepository.findById(id).get();
-            return digimonJpaMapper.fromJpaEntity(digimonJpaEntity);
+            return digimonJpaMapper.fromJpaEntity(digimonJpaRepository.findById(id).orElseThrow(NoSuchElementException::new));
         } catch (Exception e) {
             System.out.println("Exception: " + e.getMessage());
+            return null;
         }
-        return null;
     }
 
     @Override
     public List<Digimon> findAll() {
-
-        List<DigimonJpaEntity> digimonJpaEntities = digimonJpaRepository.findAll();
-        List<Digimon> digimons = new ArrayList<>();
-        digimonJpaEntities.forEach(digimonJpaEntity -> digimons.add(digimonJpaMapper.fromJpaEntity(digimonJpaEntity)));
-        return digimons;
-
+        try {
+            return digimonJpaMapper.fromJpaEntity(digimonJpaRepository.findAll());
+        } catch (Exception e) {
+            System.out.println("Exception: " + e.getMessage());
+            return null;
+        }
     }
 }

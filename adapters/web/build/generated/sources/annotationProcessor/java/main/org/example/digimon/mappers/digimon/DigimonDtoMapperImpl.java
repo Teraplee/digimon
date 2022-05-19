@@ -4,34 +4,35 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.annotation.processing.Generated;
+import org.example.digimon.domain.dictionary.familyDictionary.FamilyDictionary;
 import org.example.digimon.domain.digimon.Digimon;
-import org.example.digimon.domain.familyDictionary.FamilyDictionary;
 import org.example.digimon.domain.player.Player;
-import org.example.digimon.domain.typeDictionary.TypeDictionary;
-import org.example.digimon.dto.classDictionary.ClassDictionaryDtoOut;
+import org.example.digimon.dto.dictionary.classDictionary.ClassDictionaryDtoOut;
+import org.example.digimon.dto.dictionary.familyDictionary.FamilyDictionaryDtoIn;
+import org.example.digimon.dto.dictionary.familyDictionary.FamilyDictionaryDtoOut;
+import org.example.digimon.dto.dictionary.groupDictionary.GroupDictionaryDtoOut;
+import org.example.digimon.dto.dictionary.typeDictionary.TypeDictionaryDtoOut;
 import org.example.digimon.dto.digimon.DigimonDtoIn;
 import org.example.digimon.dto.digimon.DigimonDtoOut;
-import org.example.digimon.dto.familyDictionary.FamilyDictionaryDtoIn;
-import org.example.digimon.dto.familyDictionary.FamilyDictionaryDtoOut;
-import org.example.digimon.dto.groupDictionary.GroupDictionaryDtoOut;
 import org.example.digimon.dto.player.PlayerDtoIn;
 import org.example.digimon.dto.player.PlayerDtoOut;
-import org.example.digimon.dto.typeDictionary.TypeDictionaryDtoIn;
-import org.example.digimon.dto.typeDictionary.TypeDictionaryDtoOut;
-import org.example.digimon.mappers.classDictionary.ClassDictionaryDtoMapper;
-import org.example.digimon.mappers.familyDictionary.FamilyDictionaryDtoMapper;
-import org.example.digimon.mappers.groupDictionary.GroupDictionaryDtoMapper;
+import org.example.digimon.mappers.dictionary.classDictionary.ClassDictionaryDtoMapper;
+import org.example.digimon.mappers.dictionary.familyDictionary.FamilyDictionaryDtoMapper;
+import org.example.digimon.mappers.dictionary.groupDictionary.GroupDictionaryDtoMapper;
+import org.example.digimon.mappers.dictionary.typeDictionary.TypeDictionaryDtoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-18T20:26:30+0300",
+    date = "2022-05-19T21:08:07+0300",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.4.jar, environment: Java 17.0.3.1 (Oracle Corporation)"
 )
 @Component
 public class DigimonDtoMapperImpl implements DigimonDtoMapper {
 
+    @Autowired
+    private TypeDictionaryDtoMapper typeDictionaryDtoMapper;
     @Autowired
     private ClassDictionaryDtoMapper classDictionaryDtoMapper;
     @Autowired
@@ -40,34 +41,34 @@ public class DigimonDtoMapperImpl implements DigimonDtoMapper {
     private FamilyDictionaryDtoMapper familyDictionaryDtoMapper;
 
     @Override
-    public Digimon fromDtoIn(DigimonDtoIn dtoIn) {
-        if ( dtoIn == null ) {
+    public Digimon fromDtoIn(DigimonDtoIn arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         Digimon digimon = new Digimon();
 
-        digimon.setId( dtoIn.getId() );
-        digimon.setName( dtoIn.getName() );
-        digimon.setAttack( dtoIn.getAttack() );
-        digimon.setDefence( dtoIn.getDefence() );
-        digimon.setLevel( dtoIn.getLevel() );
-        digimon.setImageUrl( dtoIn.getImageUrl() );
-        digimon.setTypeDictionary( typeDictionaryDtoInToTypeDictionary( dtoIn.getTypeDictionary() ) );
-        digimon.setClassDictionary( classDictionaryDtoMapper.fromDtoIn( dtoIn.getClassDictionary() ) );
-        digimon.setGroupDictionary( groupDictionaryDtoMapper.fromDtoIn( dtoIn.getGroupDictionary() ) );
-        digimon.setGender( dtoIn.getGender() );
-        digimon.setUpdatedAt( dtoIn.getUpdatedAt() );
-        digimon.setUpdatedBy( dtoIn.getUpdatedBy() );
-        digimon.setPlayers( playerDtoInSetToPlayerSet( dtoIn.getPlayers() ) );
-        digimon.setFamilies( familyDictionaryDtoInSetToFamilyDictionarySet( dtoIn.getFamilies() ) );
+        digimon.setId( arg0.getId() );
+        digimon.setName( arg0.getName() );
+        digimon.setAttack( arg0.getAttack() );
+        digimon.setDefence( arg0.getDefence() );
+        digimon.setLevel( arg0.getLevel() );
+        digimon.setImageUrl( arg0.getImageUrl() );
+        digimon.setTypeDictionary( typeDictionaryDtoMapper.fromDtoIn( arg0.getTypeDictionary() ) );
+        digimon.setClassDictionary( classDictionaryDtoMapper.fromDtoIn( arg0.getClassDictionary() ) );
+        digimon.setGroupDictionary( groupDictionaryDtoMapper.fromDtoIn( arg0.getGroupDictionary() ) );
+        digimon.setGender( arg0.getGender() );
+        digimon.setUpdatedAt( arg0.getUpdatedAt() );
+        digimon.setUpdatedBy( arg0.getUpdatedBy() );
+        digimon.setPlayers( playerDtoInSetToPlayerSet( arg0.getPlayers() ) );
+        digimon.setFamilies( familyDictionaryDtoInSetToFamilyDictionarySet( arg0.getFamilies() ) );
 
         return digimon;
     }
 
     @Override
-    public DigimonDtoOut toDtoOut(Digimon dtoOut) {
-        if ( dtoOut == null ) {
+    public DigimonDtoOut toDtoOut(Digimon arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
@@ -86,39 +87,24 @@ public class DigimonDtoMapperImpl implements DigimonDtoMapper {
         Date updatedAt = null;
         String updatedBy = null;
 
-        players = playerSetToPlayerDtoOutSet( dtoOut.getPlayers() );
-        families = familyDictionarySetToFamilyDictionaryDtoOutSet( dtoOut.getFamilies() );
-        id = dtoOut.getId();
-        name = dtoOut.getName();
-        attack = dtoOut.getAttack();
-        defence = dtoOut.getDefence();
-        level = dtoOut.getLevel();
-        imageUrl = dtoOut.getImageUrl();
-        typeDictionary = typeDictionaryToTypeDictionaryDtoOut( dtoOut.getTypeDictionary() );
-        classDictionary = classDictionaryDtoMapper.toDtoOut( dtoOut.getClassDictionary() );
-        groupDictionary = groupDictionaryDtoMapper.toDtoOut( dtoOut.getGroupDictionary() );
-        gender = dtoOut.getGender();
-        updatedAt = dtoOut.getUpdatedAt();
-        updatedBy = dtoOut.getUpdatedBy();
+        players = playerSetToPlayerDtoOutSet( arg0.getPlayers() );
+        families = familyDictionarySetToFamilyDictionaryDtoOutSet( arg0.getFamilies() );
+        id = arg0.getId();
+        name = arg0.getName();
+        attack = arg0.getAttack();
+        defence = arg0.getDefence();
+        level = arg0.getLevel();
+        imageUrl = arg0.getImageUrl();
+        typeDictionary = typeDictionaryDtoMapper.toDtoOut( arg0.getTypeDictionary() );
+        classDictionary = classDictionaryDtoMapper.toDtoOut( arg0.getClassDictionary() );
+        groupDictionary = groupDictionaryDtoMapper.toDtoOut( arg0.getGroupDictionary() );
+        gender = arg0.getGender();
+        updatedAt = arg0.getUpdatedAt();
+        updatedBy = arg0.getUpdatedBy();
 
         DigimonDtoOut digimonDtoOut = new DigimonDtoOut( id, name, attack, defence, level, imageUrl, typeDictionary, classDictionary, groupDictionary, gender, updatedAt, updatedBy, players, families );
 
         return digimonDtoOut;
-    }
-
-    protected TypeDictionary typeDictionaryDtoInToTypeDictionary(TypeDictionaryDtoIn typeDictionaryDtoIn) {
-        if ( typeDictionaryDtoIn == null ) {
-            return null;
-        }
-
-        TypeDictionary typeDictionary = new TypeDictionary();
-
-        typeDictionary.setId( typeDictionaryDtoIn.getId() );
-        typeDictionary.setValue( typeDictionaryDtoIn.getValue() );
-        typeDictionary.setUpdatedAt( typeDictionaryDtoIn.getUpdatedAt() );
-        typeDictionary.setUpdatedBy( typeDictionaryDtoIn.getUpdatedBy() );
-
-        return typeDictionary;
     }
 
     protected Set<Digimon> digimonDtoInSetToDigimonSet(Set<DigimonDtoIn> set) {
@@ -251,25 +237,5 @@ public class DigimonDtoMapperImpl implements DigimonDtoMapper {
         }
 
         return set1;
-    }
-
-    protected TypeDictionaryDtoOut typeDictionaryToTypeDictionaryDtoOut(TypeDictionary typeDictionary) {
-        if ( typeDictionary == null ) {
-            return null;
-        }
-
-        Long id = null;
-        String value = null;
-        Date updatedAt = null;
-        String updatedBy = null;
-
-        id = typeDictionary.getId();
-        value = typeDictionary.getValue();
-        updatedAt = typeDictionary.getUpdatedAt();
-        updatedBy = typeDictionary.getUpdatedBy();
-
-        TypeDictionaryDtoOut typeDictionaryDtoOut = new TypeDictionaryDtoOut( id, value, updatedAt, updatedBy );
-
-        return typeDictionaryDtoOut;
     }
 }

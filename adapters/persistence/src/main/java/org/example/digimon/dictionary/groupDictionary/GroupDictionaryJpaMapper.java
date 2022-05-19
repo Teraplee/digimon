@@ -1,7 +1,6 @@
 package org.example.digimon.dictionary.groupDictionary;
 
-import org.example.digimon.digimon.DigimonJpaMapper;
-import org.example.digimon.domain.groupDictionary.GroupDictionary;
+import org.example.digimon.domain.dictionary.groupDictionary.GroupDictionary;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.MapperConfig;

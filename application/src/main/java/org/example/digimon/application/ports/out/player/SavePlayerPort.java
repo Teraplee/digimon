@@ -4,6 +4,6 @@ import org.example.digimon.domain.player.Player;
 
 public interface SavePlayerPort {
 
-    Player save(Player players);
+    Player save(Player player);
 
 }

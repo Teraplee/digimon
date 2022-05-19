@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-18T20:26:26+0300",
+    date = "2022-05-19T21:07:56+0300",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.4.jar, environment: Java 17.0.3.1 (Oracle Corporation)"
 )
 @Component
@@ -22,47 +22,47 @@ public class PlayerJpaMapperImpl implements PlayerJpaMapper {
     private DigimonJpaMapper digimonJpaMapper;
 
     @Override
-    public Player fromJpaEntity(PlayerJpaEntity jpaEntity) {
-        if ( jpaEntity == null ) {
+    public Player fromJpaEntity(PlayerJpaEntity arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         Player player = new Player();
 
-        player.setId( jpaEntity.getId() );
-        player.setEmail( jpaEntity.getEmail() );
-        player.setFirstName( jpaEntity.getFirstName() );
-        player.setMiddleName( jpaEntity.getMiddleName() );
-        player.setLastName( jpaEntity.getLastName() );
-        player.setPhone( jpaEntity.getPhone() );
-        player.setUsername( jpaEntity.getUsername() );
-        player.setPassword( jpaEntity.getPassword() );
-        player.setUpdatedAt( jpaEntity.getUpdatedAt() );
-        player.setUpdatedBy( jpaEntity.getUpdatedBy() );
-        player.setDigimons( digimonJpaEntitySetToDigimonSet( jpaEntity.getDigimons() ) );
+        player.setId( arg0.getId() );
+        player.setEmail( arg0.getEmail() );
+        player.setFirstName( arg0.getFirstName() );
+        player.setMiddleName( arg0.getMiddleName() );
+        player.setLastName( arg0.getLastName() );
+        player.setPhone( arg0.getPhone() );
+        player.setUsername( arg0.getUsername() );
+        player.setPassword( arg0.getPassword() );
+        player.setUpdatedAt( arg0.getUpdatedAt() );
+        player.setUpdatedBy( arg0.getUpdatedBy() );
+        player.setDigimons( digimonJpaEntitySetToDigimonSet( arg0.getDigimons() ) );
 
         return player;
     }
 
     @Override
-    public PlayerJpaEntity toJpaEntity(Player entity) {
-        if ( entity == null ) {
+    public PlayerJpaEntity toJpaEntity(Player arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         PlayerJpaEntity playerJpaEntity = new PlayerJpaEntity();
 
-        playerJpaEntity.setId( entity.getId() );
-        playerJpaEntity.setEmail( entity.getEmail() );
-        playerJpaEntity.setFirstName( entity.getFirstName() );
-        playerJpaEntity.setMiddleName( entity.getMiddleName() );
-        playerJpaEntity.setLastName( entity.getLastName() );
-        playerJpaEntity.setPhone( entity.getPhone() );
-        playerJpaEntity.setUsername( entity.getUsername() );
-        playerJpaEntity.setPassword( entity.getPassword() );
-        playerJpaEntity.setUpdatedAt( entity.getUpdatedAt() );
-        playerJpaEntity.setUpdatedBy( entity.getUpdatedBy() );
-        playerJpaEntity.setDigimons( digimonSetToDigimonJpaEntitySet( entity.getDigimons() ) );
+        playerJpaEntity.setId( arg0.getId() );
+        playerJpaEntity.setEmail( arg0.getEmail() );
+        playerJpaEntity.setFirstName( arg0.getFirstName() );
+        playerJpaEntity.setMiddleName( arg0.getMiddleName() );
+        playerJpaEntity.setLastName( arg0.getLastName() );
+        playerJpaEntity.setPhone( arg0.getPhone() );
+        playerJpaEntity.setUsername( arg0.getUsername() );
+        playerJpaEntity.setPassword( arg0.getPassword() );
+        playerJpaEntity.setUpdatedAt( arg0.getUpdatedAt() );
+        playerJpaEntity.setUpdatedBy( arg0.getUpdatedBy() );
+        playerJpaEntity.setDigimons( digimonSetToDigimonJpaEntitySet( arg0.getDigimons() ) );
 
         return playerJpaEntity;
     }

@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-18T20:26:31+0300",
+    date = "2022-05-19T21:08:08+0300",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.4.jar, environment: Java 17.0.3.1 (Oracle Corporation)"
 )
 @Component
@@ -26,23 +26,23 @@ public class DuelDtoMapperImpl implements DuelDtoMapper {
     private PlayerDtoMapper playerDtoMapper;
 
     @Override
-    public Duel fromDtoIn(DuelDtoIn dtoIn) {
-        if ( dtoIn == null ) {
+    public Duel fromDtoIn(DuelDtoIn arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         Duel duel = new Duel();
 
-        duel.setId( dtoIn.getId() );
-        duel.setDate( dtoIn.getDate() );
-        duel.setPlayers( playerDtoInSetToPlayerSet( dtoIn.getPlayers() ) );
+        duel.setId( arg0.getId() );
+        duel.setDate( arg0.getDate() );
+        duel.setPlayers( playerDtoInSetToPlayerSet( arg0.getPlayers() ) );
 
         return duel;
     }
 
     @Override
-    public DuelDtoOut toDtoOut(Duel dtoOut) {
-        if ( dtoOut == null ) {
+    public DuelDtoOut toDtoOut(Duel arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
@@ -50,9 +50,9 @@ public class DuelDtoMapperImpl implements DuelDtoMapper {
         Long id = null;
         Date date = null;
 
-        players = playerSetToPlayerDtoOutSet( dtoOut.getPlayers() );
-        id = dtoOut.getId();
-        date = dtoOut.getDate();
+        players = playerSetToPlayerDtoOutSet( arg0.getPlayers() );
+        id = arg0.getId();
+        date = arg0.getDate();
 
         DuelDtoOut duelDtoOut = new DuelDtoOut( id, date, players );
 

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-18T20:26:26+0300",
+    date = "2022-05-19T21:07:56+0300",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.4.jar, environment: Java 17.0.3.1 (Oracle Corporation)"
 )
 @Component
@@ -22,31 +22,31 @@ public class DuelJpaMapperImpl implements DuelJpaMapper {
     private PlayerJpaMapper playerJpaMapper;
 
     @Override
-    public Duel fromJpaEntity(DuelJpaEntity jpaEntity) {
-        if ( jpaEntity == null ) {
+    public Duel fromJpaEntity(DuelJpaEntity arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         Duel duel = new Duel();
 
-        duel.setId( jpaEntity.getId() );
-        duel.setDate( jpaEntity.getDate() );
-        duel.setPlayers( playerJpaEntitySetToPlayerSet( jpaEntity.getPlayers() ) );
+        duel.setId( arg0.getId() );
+        duel.setDate( arg0.getDate() );
+        duel.setPlayers( playerJpaEntitySetToPlayerSet( arg0.getPlayers() ) );
 
         return duel;
     }
 
     @Override
-    public DuelJpaEntity toJpaEntity(Duel entity) {
-        if ( entity == null ) {
+    public DuelJpaEntity toJpaEntity(Duel arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         DuelJpaEntity duelJpaEntity = new DuelJpaEntity();
 
-        duelJpaEntity.setId( entity.getId() );
-        duelJpaEntity.setDate( entity.getDate() );
-        duelJpaEntity.setPlayers( playerSetToPlayerJpaEntitySet( entity.getPlayers() ) );
+        duelJpaEntity.setId( arg0.getId() );
+        duelJpaEntity.setDate( arg0.getDate() );
+        duelJpaEntity.setPlayers( playerSetToPlayerJpaEntitySet( arg0.getPlayers() ) );
 
         return duelJpaEntity;
     }

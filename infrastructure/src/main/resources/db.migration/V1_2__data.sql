@@ -207,3 +207,5 @@ INSERT INTO digimon.digimon(id, name, attack, defence, level, image_url, type_id
 INSERT INTO digimon.digimon(id, name, attack, defence, level, image_url, type_id, class_id, group_id, gender, updated_at, updated_by) VALUES (207, 'Baihumon', 7, 6, 'Mega', 'https://digimon.shadowsmith.com/img/baihumon.jpg', 1, 154, 1, 'Male', current_timestamp, 'digimon_system');
 INSERT INTO digimon.digimon(id, name, attack, defence, level, image_url, type_id, class_id, group_id, gender, updated_at, updated_by) VALUES (208, 'Mokumon', 2, 1, 'Fresh', 'https://digimon.shadowsmith.com/img/mokumon.jpg', 2, 25, 2, 'Male', current_timestamp, 'digimon_system');
 INSERT INTO digimon.digimon(id, name, attack, defence, level, image_url, type_id, class_id, group_id, gender, updated_at, updated_by) VALUES (209, 'Omnimon', 8, 7, 'Mega', 'https://digimon.shadowsmith.com/img/omnimon.jpg', 5, 51, 1, 'Male', current_timestamp, 'digimon_system');
+
+ALTER SEQUENCE digimon.digimon_seq RESTART WITH 210;

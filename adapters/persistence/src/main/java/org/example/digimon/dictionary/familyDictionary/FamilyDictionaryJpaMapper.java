@@ -1,7 +1,6 @@
 package org.example.digimon.dictionary.familyDictionary;
 
-import org.example.digimon.digimon.DigimonJpaMapper;
-import org.example.digimon.domain.familyDictionary.FamilyDictionary;
+import org.example.digimon.domain.dictionary.familyDictionary.FamilyDictionary;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.MapperConfig;

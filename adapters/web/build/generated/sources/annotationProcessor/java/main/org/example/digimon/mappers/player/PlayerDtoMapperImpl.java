@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-18T20:26:31+0300",
+    date = "2022-05-19T21:08:08+0300",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.4.jar, environment: Java 17.0.3.1 (Oracle Corporation)"
 )
 @Component
@@ -26,31 +26,31 @@ public class PlayerDtoMapperImpl implements PlayerDtoMapper {
     private DigimonDtoMapper digimonDtoMapper;
 
     @Override
-    public Player fromDtoIn(PlayerDtoIn dtoIn) {
-        if ( dtoIn == null ) {
+    public Player fromDtoIn(PlayerDtoIn arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         Player player = new Player();
 
-        player.setId( dtoIn.getId() );
-        player.setEmail( dtoIn.getEmail() );
-        player.setFirstName( dtoIn.getFirstName() );
-        player.setMiddleName( dtoIn.getMiddleName() );
-        player.setLastName( dtoIn.getLastName() );
-        player.setPhone( dtoIn.getPhone() );
-        player.setUsername( dtoIn.getUsername() );
-        player.setPassword( dtoIn.getPassword() );
-        player.setUpdatedAt( dtoIn.getUpdatedAt() );
-        player.setUpdatedBy( dtoIn.getUpdatedBy() );
-        player.setDigimons( digimonDtoInSetToDigimonSet( dtoIn.getDigimons() ) );
+        player.setId( arg0.getId() );
+        player.setEmail( arg0.getEmail() );
+        player.setFirstName( arg0.getFirstName() );
+        player.setMiddleName( arg0.getMiddleName() );
+        player.setLastName( arg0.getLastName() );
+        player.setPhone( arg0.getPhone() );
+        player.setUsername( arg0.getUsername() );
+        player.setPassword( arg0.getPassword() );
+        player.setUpdatedAt( arg0.getUpdatedAt() );
+        player.setUpdatedBy( arg0.getUpdatedBy() );
+        player.setDigimons( digimonDtoInSetToDigimonSet( arg0.getDigimons() ) );
 
         return player;
     }
 
     @Override
-    public PlayerDtoOut toDtoOut(Player dtoOut) {
-        if ( dtoOut == null ) {
+    public PlayerDtoOut toDtoOut(Player arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
@@ -65,16 +65,16 @@ public class PlayerDtoMapperImpl implements PlayerDtoMapper {
         Date updatedAt = null;
         String updatedBy = null;
 
-        digimons = digimonSetToDigimonDtoOutSet( dtoOut.getDigimons() );
-        id = dtoOut.getId();
-        email = dtoOut.getEmail();
-        firstName = dtoOut.getFirstName();
-        middleName = dtoOut.getMiddleName();
-        lastName = dtoOut.getLastName();
-        phone = dtoOut.getPhone();
-        username = dtoOut.getUsername();
-        updatedAt = dtoOut.getUpdatedAt();
-        updatedBy = dtoOut.getUpdatedBy();
+        digimons = digimonSetToDigimonDtoOutSet( arg0.getDigimons() );
+        id = arg0.getId();
+        email = arg0.getEmail();
+        firstName = arg0.getFirstName();
+        middleName = arg0.getMiddleName();
+        lastName = arg0.getLastName();
+        phone = arg0.getPhone();
+        username = arg0.getUsername();
+        updatedAt = arg0.getUpdatedAt();
+        updatedBy = arg0.getUpdatedBy();
 
         PlayerDtoOut playerDtoOut = new PlayerDtoOut( id, email, firstName, middleName, lastName, phone, username, updatedAt, updatedBy, digimons );
 
