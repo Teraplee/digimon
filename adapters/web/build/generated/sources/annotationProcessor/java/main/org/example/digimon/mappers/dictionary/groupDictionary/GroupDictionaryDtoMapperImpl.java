@@ -9,31 +9,31 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-19T18:18:39+0300",
+    date = "2022-05-20T21:01:18+0300",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.4.jar, environment: Java 17.0.3.1 (Oracle Corporation)"
 )
 @Component
 public class GroupDictionaryDtoMapperImpl implements GroupDictionaryDtoMapper {
 
     @Override
-    public GroupDictionary fromDtoIn(GroupDictionaryDtoIn dtoIn) {
-        if ( dtoIn == null ) {
+    public GroupDictionary fromDtoIn(GroupDictionaryDtoIn arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         GroupDictionary groupDictionary = new GroupDictionary();
 
-        groupDictionary.setId( dtoIn.getId() );
-        groupDictionary.setValue( dtoIn.getValue() );
-        groupDictionary.setUpdatedAt( dtoIn.getUpdatedAt() );
-        groupDictionary.setUpdatedBy( dtoIn.getUpdatedBy() );
+        groupDictionary.setId( arg0.getId() );
+        groupDictionary.setValue( arg0.getValue() );
+        groupDictionary.setUpdatedAt( arg0.getUpdatedAt() );
+        groupDictionary.setUpdatedBy( arg0.getUpdatedBy() );
 
         return groupDictionary;
     }
 
     @Override
-    public GroupDictionaryDtoOut toDtoOut(GroupDictionary dtoOut) {
-        if ( dtoOut == null ) {
+    public GroupDictionaryDtoOut toDtoOut(GroupDictionary arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
@@ -42,10 +42,10 @@ public class GroupDictionaryDtoMapperImpl implements GroupDictionaryDtoMapper {
         Date updatedAt = null;
         String updatedBy = null;
 
-        id = dtoOut.getId();
-        value = dtoOut.getValue();
-        updatedAt = dtoOut.getUpdatedAt();
-        updatedBy = dtoOut.getUpdatedBy();
+        id = arg0.getId();
+        value = arg0.getValue();
+        updatedAt = arg0.getUpdatedAt();
+        updatedBy = arg0.getUpdatedBy();
 
         GroupDictionaryDtoOut groupDictionaryDtoOut = new GroupDictionaryDtoOut( id, value, updatedAt, updatedBy );
 

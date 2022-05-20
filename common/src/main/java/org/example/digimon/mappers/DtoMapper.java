@@ -8,13 +8,9 @@ import java.util.stream.Collectors;
 
 public interface DtoMapper<DtoIn, Entity, DtoOut> {
 
-    default Entity fromDtoIn(final DtoIn dtoIn) {
-        return null;
-    }
+    Entity fromDtoIn(final DtoIn dtoIn);
 
-    default DtoOut toDtoOut(final Entity dtoOut) {
-        return null;
-    }
+    DtoOut toDtoOut(final Entity dtoOut);
 
     default List<Entity> fromDtoIn(final Collection<DtoIn> dtoIns) {
         return Optional

@@ -1,6 +1,8 @@
 package org.example.digimon.dto.duel;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.example.digimon.dto.player.PlayerDtoIn;
 
 import java.io.Serializable;
@@ -9,15 +11,11 @@ import java.util.Objects;
 import java.util.Set;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class DuelDtoIn implements Serializable {
-    private final Long id;
-    private final Date date;
-    private final Set<PlayerDtoIn> players;
 
-    public DuelDtoIn(Long id, Date date, Set<PlayerDtoIn> players) {
-        this.id = id;
-        this.date = date;
-        this.players = players;
-    }
+    private Date date;
+    private Set<PlayerDtoIn> players;
 
 }

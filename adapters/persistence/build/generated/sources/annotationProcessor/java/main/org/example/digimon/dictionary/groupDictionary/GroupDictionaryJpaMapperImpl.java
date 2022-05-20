@@ -6,40 +6,40 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-19T18:18:30+0300",
+    date = "2022-05-20T09:50:16+0300",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.4.jar, environment: Java 17.0.3.1 (Oracle Corporation)"
 )
 @Component
 public class GroupDictionaryJpaMapperImpl implements GroupDictionaryJpaMapper {
 
     @Override
-    public GroupDictionary fromJpaEntity(GroupDictionaryJpaEntity jpaEntity) {
-        if ( jpaEntity == null ) {
+    public GroupDictionary fromJpaEntity(GroupDictionaryJpaEntity arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         GroupDictionary groupDictionary = new GroupDictionary();
 
-        groupDictionary.setId( jpaEntity.getId() );
-        groupDictionary.setValue( jpaEntity.getValue() );
-        groupDictionary.setUpdatedAt( jpaEntity.getUpdatedAt() );
-        groupDictionary.setUpdatedBy( jpaEntity.getUpdatedBy() );
+        groupDictionary.setId( arg0.getId() );
+        groupDictionary.setValue( arg0.getValue() );
+        groupDictionary.setUpdatedAt( arg0.getUpdatedAt() );
+        groupDictionary.setUpdatedBy( arg0.getUpdatedBy() );
 
         return groupDictionary;
     }
 
     @Override
-    public GroupDictionaryJpaEntity toJpaEntity(GroupDictionary entity) {
-        if ( entity == null ) {
+    public GroupDictionaryJpaEntity toJpaEntity(GroupDictionary arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         GroupDictionaryJpaEntity groupDictionaryJpaEntity = new GroupDictionaryJpaEntity();
 
-        groupDictionaryJpaEntity.setId( entity.getId() );
-        groupDictionaryJpaEntity.setValue( entity.getValue() );
-        groupDictionaryJpaEntity.setUpdatedAt( entity.getUpdatedAt() );
-        groupDictionaryJpaEntity.setUpdatedBy( entity.getUpdatedBy() );
+        groupDictionaryJpaEntity.setId( arg0.getId() );
+        groupDictionaryJpaEntity.setValue( arg0.getValue() );
+        groupDictionaryJpaEntity.setUpdatedAt( arg0.getUpdatedAt() );
+        groupDictionaryJpaEntity.setUpdatedBy( arg0.getUpdatedBy() );
 
         return groupDictionaryJpaEntity;
     }

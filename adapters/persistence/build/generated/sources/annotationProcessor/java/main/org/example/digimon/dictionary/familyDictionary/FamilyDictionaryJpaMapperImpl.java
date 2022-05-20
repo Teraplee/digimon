@@ -6,42 +6,42 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-19T18:18:31+0300",
+    date = "2022-05-20T09:50:16+0300",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.4.jar, environment: Java 17.0.3.1 (Oracle Corporation)"
 )
 @Component
 public class FamilyDictionaryJpaMapperImpl implements FamilyDictionaryJpaMapper {
 
     @Override
-    public FamilyDictionary fromJpaEntity(FamilyDictionaryJpaEntity jpaEntity) {
-        if ( jpaEntity == null ) {
+    public FamilyDictionary fromJpaEntity(FamilyDictionaryJpaEntity arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         FamilyDictionary familyDictionary = new FamilyDictionary();
 
-        familyDictionary.setId( jpaEntity.getId() );
-        familyDictionary.setValue( jpaEntity.getValue() );
-        familyDictionary.setShortValue( jpaEntity.getShortValue() );
-        familyDictionary.setUpdatedAt( jpaEntity.getUpdatedAt() );
-        familyDictionary.setUpdatedBy( jpaEntity.getUpdatedBy() );
+        familyDictionary.setId( arg0.getId() );
+        familyDictionary.setValue( arg0.getValue() );
+        familyDictionary.setShortValue( arg0.getShortValue() );
+        familyDictionary.setUpdatedAt( arg0.getUpdatedAt() );
+        familyDictionary.setUpdatedBy( arg0.getUpdatedBy() );
 
         return familyDictionary;
     }
 
     @Override
-    public FamilyDictionaryJpaEntity toJpaEntity(FamilyDictionary entity) {
-        if ( entity == null ) {
+    public FamilyDictionaryJpaEntity toJpaEntity(FamilyDictionary arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         FamilyDictionaryJpaEntity familyDictionaryJpaEntity = new FamilyDictionaryJpaEntity();
 
-        familyDictionaryJpaEntity.setId( entity.getId() );
-        familyDictionaryJpaEntity.setValue( entity.getValue() );
-        familyDictionaryJpaEntity.setShortValue( entity.getShortValue() );
-        familyDictionaryJpaEntity.setUpdatedAt( entity.getUpdatedAt() );
-        familyDictionaryJpaEntity.setUpdatedBy( entity.getUpdatedBy() );
+        familyDictionaryJpaEntity.setId( arg0.getId() );
+        familyDictionaryJpaEntity.setValue( arg0.getValue() );
+        familyDictionaryJpaEntity.setShortValue( arg0.getShortValue() );
+        familyDictionaryJpaEntity.setUpdatedAt( arg0.getUpdatedAt() );
+        familyDictionaryJpaEntity.setUpdatedBy( arg0.getUpdatedBy() );
 
         return familyDictionaryJpaEntity;
     }
