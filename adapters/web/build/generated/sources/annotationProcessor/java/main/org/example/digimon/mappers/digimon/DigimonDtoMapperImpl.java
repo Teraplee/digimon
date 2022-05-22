@@ -25,7 +25,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-20T21:01:17+0300",
+    date = "2022-05-22T10:44:55+0300",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.4.jar, environment: Java 17.0.3.1 (Oracle Corporation)"
 )
 @Component
@@ -57,8 +57,6 @@ public class DigimonDtoMapperImpl implements DigimonDtoMapper {
         digimon.setClassDictionary( classDictionaryDtoMapper.fromDtoIn( arg0.getClassDictionary() ) );
         digimon.setGroupDictionary( groupDictionaryDtoMapper.fromDtoIn( arg0.getGroupDictionary() ) );
         digimon.setGender( arg0.getGender() );
-        digimon.setUpdatedAt( arg0.getUpdatedAt() );
-        digimon.setUpdatedBy( arg0.getUpdatedBy() );
         digimon.setPlayers( playerDtoInSetToPlayerSet( arg0.getPlayers() ) );
         digimon.setFamilies( familyDictionaryDtoInSetToFamilyDictionarySet( arg0.getFamilies() ) );
 
@@ -133,8 +131,6 @@ public class DigimonDtoMapperImpl implements DigimonDtoMapper {
         player.setPhone( playerDtoIn.getPhone() );
         player.setUsername( playerDtoIn.getUsername() );
         player.setPassword( playerDtoIn.getPassword() );
-        player.setUpdatedAt( playerDtoIn.getUpdatedAt() );
-        player.setUpdatedBy( playerDtoIn.getUpdatedBy() );
         player.setDigimons( digimonDtoInSetToDigimonSet( playerDtoIn.getDigimons() ) );
 
         return player;

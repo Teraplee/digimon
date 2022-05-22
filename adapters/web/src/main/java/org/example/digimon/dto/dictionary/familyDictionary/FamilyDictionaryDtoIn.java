@@ -18,7 +18,5 @@ public class FamilyDictionaryDtoIn implements Serializable {
     private Long id;
     private String value;
     private String shortValue;
-    private Date updatedAt;
-    private String updatedBy;
 
 }

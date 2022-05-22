@@ -27,8 +27,6 @@ public class DigimonDtoIn implements Serializable {
     private ClassDictionaryDtoIn classDictionary;
     private GroupDictionaryDtoIn groupDictionary;
     private String gender;
-    private Date updatedAt;
-    private String updatedBy;
     private Set<PlayerDtoIn> players;
     private Set<FamilyDictionaryDtoIn> families;
 

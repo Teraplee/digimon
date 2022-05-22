@@ -1,6 +1,5 @@
 package org.example.digimon.mappers.duel;
 
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.annotation.processing.Generated;
@@ -16,7 +15,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-20T20:57:31+0300",
+    date = "2022-05-22T10:40:59+0300",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.4.jar, environment: Java 17.0.3.1 (Oracle Corporation)"
 )
 @Component
@@ -45,15 +44,11 @@ public class DuelDtoMapperImpl implements DuelDtoMapper {
             return null;
         }
 
-        Set<PlayerDtoOut> players = null;
-        Long id = null;
-        Date date = null;
+        DuelDtoOut duelDtoOut = new DuelDtoOut();
 
-        players = playerSetToPlayerDtoOutSet( arg0.getPlayers() );
-        id = arg0.getId();
-        date = arg0.getDate();
-
-        DuelDtoOut duelDtoOut = new DuelDtoOut( id, date, players );
+        duelDtoOut.setId( arg0.getId() );
+        duelDtoOut.setDate( arg0.getDate() );
+        duelDtoOut.setPlayers( playerSetToPlayerDtoOutSet( arg0.getPlayers() ) );
 
         return duelDtoOut;
     }

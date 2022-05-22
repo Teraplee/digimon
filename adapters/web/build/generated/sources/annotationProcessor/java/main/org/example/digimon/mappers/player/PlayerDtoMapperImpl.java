@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-20T21:01:17+0300",
+    date = "2022-05-22T10:44:56+0300",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.4.jar, environment: Java 17.0.3.1 (Oracle Corporation)"
 )
 @Component
@@ -40,8 +40,6 @@ public class PlayerDtoMapperImpl implements PlayerDtoMapper {
         player.setPhone( arg0.getPhone() );
         player.setUsername( arg0.getUsername() );
         player.setPassword( arg0.getPassword() );
-        player.setUpdatedAt( arg0.getUpdatedAt() );
-        player.setUpdatedBy( arg0.getUpdatedBy() );
         player.setDigimons( digimonDtoInSetToDigimonSet( arg0.getDigimons() ) );
 
         return player;

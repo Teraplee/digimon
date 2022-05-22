@@ -23,8 +23,6 @@ public class PlayerDtoIn implements Serializable {
     private String phone;
     private String username;
     private String password;
-    private Date updatedAt;
-    private String updatedBy;
     private Set<DigimonDtoIn> digimons;
 
 }

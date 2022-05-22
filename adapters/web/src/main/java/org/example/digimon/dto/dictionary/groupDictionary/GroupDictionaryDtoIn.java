@@ -14,7 +14,5 @@ public class GroupDictionaryDtoIn implements Serializable {
 
     private Long id;
     private String value;
-    private Date updatedAt;
-    private String updatedBy;
 
 }

@@ -1,5 +1,6 @@
 package org.example.digimon.dto.dictionary.classDictionary;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -7,12 +8,13 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Data
+@AllArgsConstructor
 @RequiredArgsConstructor
 public class ClassDictionaryDtoOut implements Serializable {
 
-    private final Long id;
-    private final String value;
-    private final Date updatedAt;
-    private final String updatedBy;
+    private Long id;
+    private String value;
+    private Date updatedAt;
+    private String updatedBy;
 
 }

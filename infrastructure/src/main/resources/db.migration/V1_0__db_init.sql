@@ -8,10 +8,9 @@ CREATE TABLE IF NOT EXISTS digimon.sys_setting
     updated_by  VARCHAR     NOT NULL
 );
 
-INSERT INTO digimon.sys_setting(name, value, updated_at, updated_by)
-VALUES ('last_db_modify', current_timestamp, current_timestamp, 'digimon_system'),
-       ('db_version', '1.00.00', current_timestamp, 'digimon_system'),
-       ('db_status', 'success', current_timestamp, 'digimon_system');
+INSERT INTO digimon.sys_setting(name, value, updated_at, updated_by) VALUES ('last_db_modify', current_timestamp, current_timestamp, 'digimon_system');
+INSERT INTO digimon.sys_setting(name, value, updated_at, updated_by) VALUES ('db_version', '1.00.00', current_timestamp, 'digimon_system');
+INSERT INTO digimon.sys_setting(name, value, updated_at, updated_by) VALUES ('db_status', 'success', current_timestamp, 'digimon_system');
 
 CREATE SEQUENCE IF NOT EXISTS digimon.duel_seq START 1;
 
