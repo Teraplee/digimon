@@ -16,6 +16,8 @@ public class Duel {
 
     private Long id;
     private Date date;
+    //private Date updatedAt;
+    //private String updatedBy;
     private Set<Player> players;
 
 }

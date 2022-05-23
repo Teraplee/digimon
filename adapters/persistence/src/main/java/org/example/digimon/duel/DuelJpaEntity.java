@@ -23,6 +23,12 @@ public class DuelJpaEntity {
     @Column(name = "date")
     private Date date;
 
+    //@Column(name = "updated_at")
+    //private Date updatedAt;
+//
+    //@Column(name = "updated_by")
+    //private String updatedBy;
+
     @ManyToMany
     @JoinTable(name = "duel_players",
             joinColumns = @JoinColumn(name = "duel_id"),

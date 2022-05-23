@@ -1,6 +1,8 @@
 package org.example.digimon.dto.digimon;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.example.digimon.dto.dictionary.classDictionary.ClassDictionaryDtoOut;
 import org.example.digimon.dto.dictionary.familyDictionary.FamilyDictionaryDtoOut;
@@ -13,22 +15,23 @@ import java.util.Date;
 import java.util.Set;
 
 @Data
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class DigimonDtoOut implements Serializable {
 
-    private final Long id;
-    private final String name;
-    private final Double attack;
-    private final Double defence;
-    private final String level;
-    private final String imageUrl;
-    private final TypeDictionaryDtoOut typeDictionary;
-    private final ClassDictionaryDtoOut classDictionary;
-    private final GroupDictionaryDtoOut groupDictionary;
-    private final String gender;
-    private final Date updatedAt;
-    private final String updatedBy;
-    private final Set<PlayerDtoOut> players;
-    private final Set<FamilyDictionaryDtoOut> families;
+    private Long id;
+    private String name;
+    private Double attack;
+    private Double defence;
+    private String level;
+    private String imageUrl;
+    private TypeDictionaryDtoOut typeDictionary;
+    private ClassDictionaryDtoOut classDictionary;
+    private GroupDictionaryDtoOut groupDictionary;
+    private String gender;
+    private Date updatedAt;
+    private String updatedBy;
+    private Set<PlayerDtoOut> players;
+    private Set<FamilyDictionaryDtoOut> families;
 
 }

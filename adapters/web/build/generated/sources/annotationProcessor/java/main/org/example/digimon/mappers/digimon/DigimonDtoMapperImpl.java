@@ -1,17 +1,13 @@
 package org.example.digimon.mappers.digimon;
 
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.annotation.processing.Generated;
 import org.example.digimon.domain.dictionary.familyDictionary.FamilyDictionary;
 import org.example.digimon.domain.digimon.Digimon;
 import org.example.digimon.domain.player.Player;
-import org.example.digimon.dto.dictionary.classDictionary.ClassDictionaryDtoOut;
 import org.example.digimon.dto.dictionary.familyDictionary.FamilyDictionaryDtoIn;
 import org.example.digimon.dto.dictionary.familyDictionary.FamilyDictionaryDtoOut;
-import org.example.digimon.dto.dictionary.groupDictionary.GroupDictionaryDtoOut;
-import org.example.digimon.dto.dictionary.typeDictionary.TypeDictionaryDtoOut;
 import org.example.digimon.dto.digimon.DigimonDtoIn;
 import org.example.digimon.dto.digimon.DigimonDtoOut;
 import org.example.digimon.dto.player.PlayerDtoIn;
@@ -25,7 +21,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-22T10:44:55+0300",
+    date = "2022-05-23T17:19:10+0300",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.4.jar, environment: Java 17.0.3.1 (Oracle Corporation)"
 )
 @Component
@@ -69,37 +65,22 @@ public class DigimonDtoMapperImpl implements DigimonDtoMapper {
             return null;
         }
 
-        Set<PlayerDtoOut> players = null;
-        Set<FamilyDictionaryDtoOut> families = null;
-        Long id = null;
-        String name = null;
-        Double attack = null;
-        Double defence = null;
-        String level = null;
-        String imageUrl = null;
-        TypeDictionaryDtoOut typeDictionary = null;
-        ClassDictionaryDtoOut classDictionary = null;
-        GroupDictionaryDtoOut groupDictionary = null;
-        String gender = null;
-        Date updatedAt = null;
-        String updatedBy = null;
+        DigimonDtoOut digimonDtoOut = new DigimonDtoOut();
 
-        players = playerSetToPlayerDtoOutSet( arg0.getPlayers() );
-        families = familyDictionarySetToFamilyDictionaryDtoOutSet( arg0.getFamilies() );
-        id = arg0.getId();
-        name = arg0.getName();
-        attack = arg0.getAttack();
-        defence = arg0.getDefence();
-        level = arg0.getLevel();
-        imageUrl = arg0.getImageUrl();
-        typeDictionary = typeDictionaryDtoMapper.toDtoOut( arg0.getTypeDictionary() );
-        classDictionary = classDictionaryDtoMapper.toDtoOut( arg0.getClassDictionary() );
-        groupDictionary = groupDictionaryDtoMapper.toDtoOut( arg0.getGroupDictionary() );
-        gender = arg0.getGender();
-        updatedAt = arg0.getUpdatedAt();
-        updatedBy = arg0.getUpdatedBy();
-
-        DigimonDtoOut digimonDtoOut = new DigimonDtoOut( id, name, attack, defence, level, imageUrl, typeDictionary, classDictionary, groupDictionary, gender, updatedAt, updatedBy, players, families );
+        digimonDtoOut.setId( arg0.getId() );
+        digimonDtoOut.setName( arg0.getName() );
+        digimonDtoOut.setAttack( arg0.getAttack() );
+        digimonDtoOut.setDefence( arg0.getDefence() );
+        digimonDtoOut.setLevel( arg0.getLevel() );
+        digimonDtoOut.setImageUrl( arg0.getImageUrl() );
+        digimonDtoOut.setTypeDictionary( typeDictionaryDtoMapper.toDtoOut( arg0.getTypeDictionary() ) );
+        digimonDtoOut.setClassDictionary( classDictionaryDtoMapper.toDtoOut( arg0.getClassDictionary() ) );
+        digimonDtoOut.setGroupDictionary( groupDictionaryDtoMapper.toDtoOut( arg0.getGroupDictionary() ) );
+        digimonDtoOut.setGender( arg0.getGender() );
+        digimonDtoOut.setUpdatedAt( arg0.getUpdatedAt() );
+        digimonDtoOut.setUpdatedBy( arg0.getUpdatedBy() );
+        digimonDtoOut.setPlayers( playerSetToPlayerDtoOutSet( arg0.getPlayers() ) );
+        digimonDtoOut.setFamilies( familyDictionarySetToFamilyDictionaryDtoOutSet( arg0.getFamilies() ) );
 
         return digimonDtoOut;
     }
@@ -180,29 +161,18 @@ public class DigimonDtoMapperImpl implements DigimonDtoMapper {
             return null;
         }
 
-        Set<DigimonDtoOut> digimons = null;
-        Long id = null;
-        String email = null;
-        String firstName = null;
-        String middleName = null;
-        String lastName = null;
-        String phone = null;
-        String username = null;
-        Date updatedAt = null;
-        String updatedBy = null;
+        PlayerDtoOut playerDtoOut = new PlayerDtoOut();
 
-        digimons = digimonSetToDigimonDtoOutSet( player.getDigimons() );
-        id = player.getId();
-        email = player.getEmail();
-        firstName = player.getFirstName();
-        middleName = player.getMiddleName();
-        lastName = player.getLastName();
-        phone = player.getPhone();
-        username = player.getUsername();
-        updatedAt = player.getUpdatedAt();
-        updatedBy = player.getUpdatedBy();
-
-        PlayerDtoOut playerDtoOut = new PlayerDtoOut( id, email, firstName, middleName, lastName, phone, username, updatedAt, updatedBy, digimons );
+        playerDtoOut.setId( player.getId() );
+        playerDtoOut.setEmail( player.getEmail() );
+        playerDtoOut.setFirstName( player.getFirstName() );
+        playerDtoOut.setMiddleName( player.getMiddleName() );
+        playerDtoOut.setLastName( player.getLastName() );
+        playerDtoOut.setPhone( player.getPhone() );
+        playerDtoOut.setUsername( player.getUsername() );
+        playerDtoOut.setUpdatedAt( player.getUpdatedAt() );
+        playerDtoOut.setUpdatedBy( player.getUpdatedBy() );
+        playerDtoOut.setDigimons( digimonSetToDigimonDtoOutSet( player.getDigimons() ) );
 
         return playerDtoOut;
     }

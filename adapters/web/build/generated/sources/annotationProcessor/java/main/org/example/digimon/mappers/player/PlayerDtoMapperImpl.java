@@ -1,6 +1,5 @@
 package org.example.digimon.mappers.player;
 
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.annotation.processing.Generated;
@@ -16,7 +15,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-22T10:44:56+0300",
+    date = "2022-05-23T17:19:10+0300",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.4.jar, environment: Java 17.0.3.1 (Oracle Corporation)"
 )
 @Component
@@ -51,29 +50,18 @@ public class PlayerDtoMapperImpl implements PlayerDtoMapper {
             return null;
         }
 
-        Set<DigimonDtoOut> digimons = null;
-        Long id = null;
-        String email = null;
-        String firstName = null;
-        String middleName = null;
-        String lastName = null;
-        String phone = null;
-        String username = null;
-        Date updatedAt = null;
-        String updatedBy = null;
+        PlayerDtoOut playerDtoOut = new PlayerDtoOut();
 
-        digimons = digimonSetToDigimonDtoOutSet( arg0.getDigimons() );
-        id = arg0.getId();
-        email = arg0.getEmail();
-        firstName = arg0.getFirstName();
-        middleName = arg0.getMiddleName();
-        lastName = arg0.getLastName();
-        phone = arg0.getPhone();
-        username = arg0.getUsername();
-        updatedAt = arg0.getUpdatedAt();
-        updatedBy = arg0.getUpdatedBy();
-
-        PlayerDtoOut playerDtoOut = new PlayerDtoOut( id, email, firstName, middleName, lastName, phone, username, updatedAt, updatedBy, digimons );
+        playerDtoOut.setId( arg0.getId() );
+        playerDtoOut.setEmail( arg0.getEmail() );
+        playerDtoOut.setFirstName( arg0.getFirstName() );
+        playerDtoOut.setMiddleName( arg0.getMiddleName() );
+        playerDtoOut.setLastName( arg0.getLastName() );
+        playerDtoOut.setPhone( arg0.getPhone() );
+        playerDtoOut.setUsername( arg0.getUsername() );
+        playerDtoOut.setUpdatedAt( arg0.getUpdatedAt() );
+        playerDtoOut.setUpdatedBy( arg0.getUpdatedBy() );
+        playerDtoOut.setDigimons( digimonSetToDigimonDtoOutSet( arg0.getDigimons() ) );
 
         return playerDtoOut;
     }
