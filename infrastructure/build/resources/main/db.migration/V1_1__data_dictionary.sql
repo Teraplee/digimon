@@ -9,8 +9,6 @@ INSERT INTO digimon.families_dictionary (id, value, short_value, updated_at, upd
 INSERT INTO digimon.families_dictionary (id, value, short_value, updated_at, updated_by) VALUES (9, 'Dragon''s Roar', 'DR', current_timestamp, 'digimon_system');
 INSERT INTO digimon.families_dictionary (id, value, short_value, updated_at, updated_by) VALUES (10, 'Jungle Troopers', 'JT', current_timestamp, 'digimon_system');
 
-ALTER SEQUENCE digimon.families_dictionary_seq RESTART WITH 11;
-
 INSERT INTO digimon.types_dictionary (id, value, updated_at, updated_by) VALUES (1, 'Data', current_timestamp, 'digimon_system');
 INSERT INTO digimon.types_dictionary (id, value, updated_at, updated_by) VALUES (2, 'Vaccine', current_timestamp, 'digimon_system');
 INSERT INTO digimon.types_dictionary (id, value, updated_at, updated_by) VALUES (3, 'Virus', current_timestamp, 'digimon_system');
@@ -18,8 +16,6 @@ INSERT INTO digimon.types_dictionary (id, value, updated_at, updated_by) VALUES 
 INSERT INTO digimon.types_dictionary (id, value, updated_at, updated_by) VALUES (5, 'Variable', current_timestamp, 'digimon_system');
 INSERT INTO digimon.types_dictionary (id, value, updated_at, updated_by) VALUES (6, 'Unidentified', current_timestamp, 'digimon_system');
 INSERT INTO digimon.types_dictionary (id, value, updated_at, updated_by) VALUES (7, 'No Attribute', current_timestamp, 'digimon_system');
-
-ALTER SEQUENCE digimon.types_dictionary_seq RESTART WITH 8;
 
 INSERT INTO digimon.classes_dictionary (id, value, updated_at, updated_by) VALUES (1, '9000 Type', current_timestamp, 'digimon_system');
 INSERT INTO digimon.classes_dictionary (id, value, updated_at, updated_by) VALUES (2, 'Alien Type', current_timestamp, 'digimon_system');
@@ -176,9 +172,10 @@ INSERT INTO digimon.classes_dictionary (id, value, updated_at, updated_by) VALUE
 INSERT INTO digimon.classes_dictionary (id, value, updated_at, updated_by) VALUES (153, 'Weapon Type', current_timestamp, 'digimon_system');
 INSERT INTO digimon.classes_dictionary (id, value, updated_at, updated_by) VALUES (154, 'Wicked God Type', current_timestamp, 'digimon_system');
 
-ALTER SEQUENCE digimon.classes_dictionary_seq RESTART WITH 155;
-
 INSERT INTO digimon.groups_dictionary (id, value, updated_at, updated_by) VALUES (1, 'Seven Great Demon Lords', current_timestamp, 'digimon_system');
 INSERT INTO digimon.groups_dictionary (id, value, updated_at, updated_by) VALUES (2, 'Three Archangels', current_timestamp, 'digimon_system');
 
-ALTER SEQUENCE digimon.groups_dictionary_seq RESTART WITH 3;
+SELECT setval('digimon.families_dictionary_seq', (SELECT MAX(id) FROM digimon.families_dictionary));
+SELECT setval('digimon.types_dictionary_seq', (SELECT MAX(id) FROM digimon.types_dictionary));
+SELECT setval('digimon.classes_dictionary_seq', (SELECT MAX(id) FROM digimon.classes_dictionary));
+SELECT setval('digimon.groups_dictionary_seq', (SELECT MAX(id) FROM digimon.groups_dictionary));
