@@ -18,6 +18,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class DigimonDtoIn implements Serializable {
 
+    private Long id;
     private String name;
     private Double attack;
     private Double defence;

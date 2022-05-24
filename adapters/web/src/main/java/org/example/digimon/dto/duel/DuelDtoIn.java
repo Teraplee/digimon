@@ -15,6 +15,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class DuelDtoIn implements Serializable {
 
+    private Long id;
     private Date date;
     private Set<PlayerDtoIn> players;
 

@@ -17,13 +17,13 @@ $$
 
         UPDATE digimon.sys_setting SET value = 'Loading' WHERE name = 'db_status';
 
-        CREATE OR REPLACE FUNCTION digimon.updated_trigger_function() RETURNS TRIGGER AS $trigger_function$
+        CREATE OR REPLACE FUNCTION digimon.updated_trigger_function() RETURNS TRIGGER AS $updated_trigger_function$
         BEGIN
             NEW.updated_at := current_timestamp;
             NEW.updated_by := 'digimon_system'; -- current_user;
             RETURN NEW;
         END
-        $trigger_function$ LANGUAGE plpgsql;
+        $updated_trigger_function$ LANGUAGE plpgsql;
 
         CREATE TRIGGER digimon_updated_trigger
             BEFORE INSERT OR UPDATE ON digimon.digimon
@@ -60,7 +60,7 @@ $$
             id            BIGINT PRIMARY KEY NOT NULL DEFAULT nextval('digimon.settings_seq'),
             name          VARCHAR            NOT NULL,
             value         VARCHAR            NOT NULL,
-            default_value VARCHAR            NOT NULL DEFAULT 'default_value',
+            default_value VARCHAR            NOT NULL,
             updated_at    TIMESTAMP          NOT NULL,
             updated_by    VARCHAR            NOT NULL
         );
@@ -69,7 +69,9 @@ $$
             BEFORE INSERT OR UPDATE ON digimon.settings
             FOR EACH ROW EXECUTE PROCEDURE digimon.updated_trigger_function();
 
-        INSERT INTO digimon.settings(name, value) VALUES ('system_user', 'system_user');
+        INSERT INTO digimon.settings(id, name, value, default_value, updated_at, updated_by) VALUES (1, 'system_user', 'system_user', 'system_user', current_timestamp, 'digimon_system');
+
+        ALTER SEQUENCE digimon.settings_seq RESTART WITH 2;
 
         UPDATE digimon.sys_setting SET value = current_timestamp WHERE name = 'last_db_modify';
         UPDATE digimon.sys_setting SET value = '1.01.00' WHERE name = 'db_version';

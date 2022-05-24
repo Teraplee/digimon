@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-23T17:44:31+0300",
+    date = "2022-05-24T17:25:46+0300",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.4.jar, environment: Java 17.0.3.1 (Oracle Corporation)"
 )
 @Component
@@ -32,6 +32,7 @@ public class DuelDtoMapperImpl implements DuelDtoMapper {
 
         Duel duel = new Duel();
 
+        duel.setId( arg0.getId() );
         duel.setDate( arg0.getDate() );
         duel.setPlayers( playerDtoInSetToPlayerSet( arg0.getPlayers() ) );
 
@@ -48,6 +49,8 @@ public class DuelDtoMapperImpl implements DuelDtoMapper {
 
         duelDtoOut.setId( arg0.getId() );
         duelDtoOut.setDate( arg0.getDate() );
+        duelDtoOut.setUpdatedAt( arg0.getUpdatedAt() );
+        duelDtoOut.setUpdatedBy( arg0.getUpdatedBy() );
         duelDtoOut.setPlayers( playerSetToPlayerDtoOutSet( arg0.getPlayers() ) );
 
         return duelDtoOut;

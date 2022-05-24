@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static org.example.digimon.constants.DuelConstants.*;
+import static org.example.digimon.constants.duel.DuelEndPointConstants.*;
+import static org.example.digimon.constants.endPointConstants.EndPointConstants.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,22 +24,22 @@ public class DuelController {
     private final SearchDuelUseCase searchDuelUseCase;
     private final DuelDtoMapper duelDtoMapper;
 
-    @GetMapping(API_DUEL_FIND_BY_ID)
+    @GetMapping(API_FIND_BY_ID)
     public DuelDtoOut findById(@PathVariable("id") Long id) {
         return duelDtoMapper.toDtoOut(searchDuelUseCase.findById(id));
     }
 
-    @GetMapping(API_DUEL_FIND_ALL)
+    @GetMapping(API_FIND_ALL)
     public List<DuelDtoOut> findAll() {
         return duelDtoMapper.toDtoOut(searchDuelUseCase.findAll());
     }
 
-    @PostMapping(API_DUEL_SAVE)
+    @PostMapping(API_SAVE)
     public DuelDtoOut save(@RequestBody DuelDtoIn dtoIn) {
         return duelDtoMapper.toDtoOut(saveDuelUseCase.save(duelDtoMapper.fromDtoIn(dtoIn)));
     }
 
-    @GetMapping(API_DUEL_REMOVE_BY_ID)
+    @GetMapping(API_REMOVE_BY_ID)
     public void remove(@PathVariable("id") Long id) {
         removeDuelUseCase.remove(id);
     }

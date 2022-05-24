@@ -60,13 +60,7 @@ public class DigimonJpaEntity {
     @Column(name = "updated_by")
     private String updatedBy;
 
-    @ManyToMany
-    @JoinTable(name = "players_digimon",
-            joinColumns = @JoinColumn(name = "digimon_id"),
-            inverseJoinColumns = @JoinColumn(name = "player_id"))
-    private Set<PlayerJpaEntity> players;
-
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(name = "digimon_families_dictionary",
             joinColumns = @JoinColumn(name = "digimon_id"),
             inverseJoinColumns = @JoinColumn(name = "family_id"))

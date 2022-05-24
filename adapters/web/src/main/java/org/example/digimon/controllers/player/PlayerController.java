@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static org.example.digimon.constants.PlayerConstants.*;
+import static org.example.digimon.constants.endPointConstants.EndPointConstants.*;
+import static org.example.digimon.constants.player.PlayerEndPointConstants.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,22 +24,22 @@ public class PlayerController {
     private final SearchPlayerUseCase searchPlayerUseCase;
     private final PlayerDtoMapper playerDtoMapper;
 
-    @GetMapping(API_PLAYER_FIND_BY_ID)
+    @GetMapping(API_FIND_BY_ID)
     public PlayerDtoOut findById(@PathVariable("id") Long id) {
         return playerDtoMapper.toDtoOut(searchPlayerUseCase.findById(id));
     }
 
-    @GetMapping(API_PLAYER_FIND_ALL)
+    @GetMapping(API_FIND_ALL)
     public List<PlayerDtoOut> findAll() {
         return playerDtoMapper.toDtoOut(searchPlayerUseCase.findAll());
     }
 
-    @PostMapping(API_PLAYER_SAVE)
+    @PostMapping(API_SAVE)
     public PlayerDtoOut save(@RequestBody PlayerDtoIn dtoIn) {
         return playerDtoMapper.toDtoOut(savePlayerUseCase.save(playerDtoMapper.fromDtoIn(dtoIn)));
     }
 
-    @GetMapping(API_PLAYER_REMOVE_BY_ID)
+    @GetMapping(API_REMOVE_BY_ID)
     public void remove(@PathVariable("id") Long id) {
 
         removePlayerUseCase.remove(id);

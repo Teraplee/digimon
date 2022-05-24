@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static org.example.digimon.constants.ClassDictionaryConstants.*;
+import static org.example.digimon.constants.dictionary.classDictionary.ClassDictionaryEndPointConstants.*;
+import static org.example.digimon.constants.endPointConstants.EndPointConstants.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,22 +24,22 @@ public class ClassDictionaryController {
     private final SearchClassDictionaryUseCase searchClassDictionaryUseCase;
     private final ClassDictionaryDtoMapper classDictionaryDtoMapper;
 
-    @GetMapping(API_CLASS_DICTIONARY_FIND_BY_ID)
+    @GetMapping(API_FIND_BY_ID)
     public ClassDictionaryDtoOut findById(@PathVariable("id") Long id) {
         return classDictionaryDtoMapper.toDtoOut(searchClassDictionaryUseCase.findById(id));
     }
 
-    @GetMapping(API_CLASS_DICTIONARY_FIND_ALL)
+    @GetMapping(API_FIND_ALL)
     public List<ClassDictionaryDtoOut> findAll() {
         return classDictionaryDtoMapper.toDtoOut(searchClassDictionaryUseCase.findAll());
     }
 
-    @PostMapping(API_CLASS_DICTIONARY_SAVE)
+    @PostMapping(API_SAVE)
     public ClassDictionaryDtoOut save(@RequestBody ClassDictionaryDtoIn dtoIn) {
         return classDictionaryDtoMapper.toDtoOut(saveClassDictionaryUseCase.save(classDictionaryDtoMapper.fromDtoIn(dtoIn)));
     }
 
-    @GetMapping(API_CLASS_DICTIONARY_REMOVE_BY_ID)
+    @GetMapping(API_REMOVE_BY_ID)
     public void remove(@PathVariable("id") Long id) {
         removeClassDictionaryUseCase.remove(id);
     }

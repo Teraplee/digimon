@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static org.example.digimon.constants.FamilyDictionaryConstants.*;
+import static org.example.digimon.constants.dictionary.familyDictionary.FamilyDictionaryEndPointConstants.*;
+import static org.example.digimon.constants.endPointConstants.EndPointConstants.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,22 +24,22 @@ public class FamilyDictionaryController {
     private final SearchFamilyDictionaryUseCase searchFamilyDictionaryUseCase;
     private final FamilyDictionaryDtoMapper familyDictionaryDtoMapper;
 
-    @GetMapping(API_FAMILY_DICTIONARY_FIND_BY_ID)
+    @GetMapping(API_FIND_BY_ID)
     public FamilyDictionaryDtoOut findById(@PathVariable("id") Long id) {
         return familyDictionaryDtoMapper.toDtoOut(searchFamilyDictionaryUseCase.findById(id));
     }
 
-    @GetMapping(API_FAMILY_DICTIONARY_FIND_ALL)
+    @GetMapping(API_FIND_ALL)
     public List<FamilyDictionaryDtoOut> findAll() {
         return familyDictionaryDtoMapper.toDtoOut(searchFamilyDictionaryUseCase.findAll());
     }
 
-    @PostMapping(API_FAMILY_DICTIONARY_SAVE)
+    @PostMapping(API_SAVE)
     public FamilyDictionaryDtoOut save(@RequestBody FamilyDictionaryDtoIn dtoIn) {
         return familyDictionaryDtoMapper.toDtoOut(saveFamilyDictionaryUseCase.save(familyDictionaryDtoMapper.fromDtoIn(dtoIn)));
     }
 
-    @GetMapping(API_FAMILY_DICTIONARY_REMOVE_BY_ID)
+    @GetMapping(API_REMOVE_BY_ID)
     public void remove(@PathVariable("id") Long id) {
         removeFamilyDictionaryUseCase.remove(id);
     }

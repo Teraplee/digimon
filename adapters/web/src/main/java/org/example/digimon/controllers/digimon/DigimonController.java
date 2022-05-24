@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static org.example.digimon.constants.DigimonConstants.*;
+import static org.example.digimon.constants.digimon.DigimonEndPointConstants.*;
+import static org.example.digimon.constants.endPointConstants.EndPointConstants.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,22 +24,22 @@ public class DigimonController {
     private final SearchDigimonUseCase searchDigimonUseCase;
     private final DigimonDtoMapper digimonDtoMapper;
 
-    @GetMapping(API_DIGIMON_FIND_BY_ID)
+    @GetMapping(API_FIND_BY_ID)
     public DigimonDtoOut findById(@PathVariable("id") Long id) {
         return digimonDtoMapper.toDtoOut(searchDigimonUseCase.findById(id));
     }
 
-    @GetMapping(API_DIGIMON_FIND_ALL)
+    @GetMapping(API_FIND_ALL)
     public List<DigimonDtoOut> findAll() {
         return digimonDtoMapper.toDtoOut(searchDigimonUseCase.findAll());
     }
 
-    @PostMapping(API_DIGIMON_SAVE)
+    @PostMapping(API_SAVE)
     public DigimonDtoOut save(@RequestBody DigimonDtoIn dtoIn) {
         return digimonDtoMapper.toDtoOut(saveDigimonUseCase.save(digimonDtoMapper.fromDtoIn(dtoIn)));
     }
 
-    @GetMapping(API_DIGIMON_REMOVE_BY_ID)
+    @GetMapping(API_REMOVE_BY_ID)
     public void remove(@PathVariable("id") Long id) {
         removeDigimonUseCase.remove(id);
     }

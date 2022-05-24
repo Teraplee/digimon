@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-23T17:44:28+0300",
+    date = "2022-05-24T17:53:56+0300",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.4.jar, environment: Java 17.0.3.1 (Oracle Corporation)"
 )
 @Component
@@ -31,6 +31,8 @@ public class DuelJpaMapperImpl implements DuelJpaMapper {
 
         duel.setId( arg0.getId() );
         duel.setDate( arg0.getDate() );
+        duel.setUpdatedAt( arg0.getUpdatedAt() );
+        duel.setUpdatedBy( arg0.getUpdatedBy() );
         duel.setPlayers( playerJpaEntitySetToPlayerSet( arg0.getPlayers() ) );
 
         return duel;
@@ -46,6 +48,8 @@ public class DuelJpaMapperImpl implements DuelJpaMapper {
 
         duelJpaEntity.setId( arg0.getId() );
         duelJpaEntity.setDate( arg0.getDate() );
+        duelJpaEntity.setUpdatedAt( arg0.getUpdatedAt() );
+        duelJpaEntity.setUpdatedBy( arg0.getUpdatedBy() );
         duelJpaEntity.setPlayers( playerSetToPlayerJpaEntitySet( arg0.getPlayers() ) );
 
         return duelJpaEntity;

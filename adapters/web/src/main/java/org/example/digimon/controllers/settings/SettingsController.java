@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static org.example.digimon.constants.SettingsConstants.*;
+import static org.example.digimon.constants.endPointConstants.EndPointConstants.*;
+import static org.example.digimon.constants.settings.SettingsEndPointConstants.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,22 +24,22 @@ public class SettingsController {
     private final SearchSettingsUseCase searchSettingsUseCase;
     private final SettingsDtoMapper settingsDtoMapper;
 
-    @GetMapping(API_SETTINGS_FIND_BY_ID)
+    @GetMapping(API_FIND_BY_ID)
     public SettingsDtoOut findById(@PathVariable("id") Long id) {
         return settingsDtoMapper.toDtoOut(searchSettingsUseCase.findById(id));
     }
 
-    @GetMapping(API_SETTINGS_FIND_ALL)
+    @GetMapping(API_FIND_ALL)
     public List<SettingsDtoOut> findAll() {
         return settingsDtoMapper.toDtoOut(searchSettingsUseCase.findAll());
     }
 
-    @PostMapping(API_SETTINGS_SAVE)
+    @PostMapping(API_SAVE)
     public SettingsDtoOut save(@RequestBody SettingsDtoIn dtoIn) {
         return settingsDtoMapper.toDtoOut(saveSettingsUseCase.save(settingsDtoMapper.fromDtoIn(dtoIn)));
     }
 
-    @GetMapping(API_SETTINGS_REMOVE_BY_ID)
+    @GetMapping(API_REMOVE_BY_ID)
     public void remove(@PathVariable("id") Long id) {
         removeSettingsUseCase.remove(id);
     }

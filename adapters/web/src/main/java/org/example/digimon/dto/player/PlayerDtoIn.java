@@ -16,6 +16,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class PlayerDtoIn implements Serializable {
 
+    private Long id;
     private String email;
     private String firstName;
     private String middleName;

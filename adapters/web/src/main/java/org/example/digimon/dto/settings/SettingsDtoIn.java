@@ -12,6 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class SettingsDtoIn implements Serializable {
 
+    private Long id;
     private String name;
     private String value;
     private String default_value;

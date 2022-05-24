@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-23T17:27:37+0300",
+    date = "2022-05-24T17:25:46+0300",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.4.jar, environment: Java 17.0.3.1 (Oracle Corporation)"
 )
 @Component
@@ -22,6 +22,7 @@ public class SettingsDtoMapperImpl implements SettingsDtoMapper {
 
         Settings settings = new Settings();
 
+        settings.setId( arg0.getId() );
         settings.setName( arg0.getName() );
         settings.setValue( arg0.getValue() );
         settings.setDefault_value( arg0.getDefault_value() );

@@ -1,16 +1,21 @@
 CREATE SCHEMA IF NOT EXISTS digimon;
 
+CREATE SEQUENCE IF NOT EXISTS digimon.sys_setting_seq START 1;
+
 CREATE TABLE IF NOT EXISTS digimon.sys_setting
 (
-    name        VARCHAR     NOT NULL,
-    value       VARCHAR     NOT NULL,
-    updated_at  TIMESTAMP   NOT NULL,
-    updated_by  VARCHAR     NOT NULL
+    id          BIGINT PRIMARY KEY NOT NULL DEFAULT nextval('digimon.sys_setting_seq'),
+    name        VARCHAR            NOT NULL,
+    value       VARCHAR            NOT NULL,
+    updated_at  TIMESTAMP          NOT NULL,
+    updated_by  VARCHAR            NOT NULL
 );
 
-INSERT INTO digimon.sys_setting(name, value, updated_at, updated_by) VALUES ('last_db_modify', current_timestamp, current_timestamp, 'digimon_system');
-INSERT INTO digimon.sys_setting(name, value, updated_at, updated_by) VALUES ('db_version', '1.00.00', current_timestamp, 'digimon_system');
-INSERT INTO digimon.sys_setting(name, value, updated_at, updated_by) VALUES ('db_status', 'success', current_timestamp, 'digimon_system');
+INSERT INTO digimon.sys_setting(id, name, value, updated_at, updated_by) VALUES (1, 'last_db_modify', current_timestamp, current_timestamp, 'digimon_system');
+INSERT INTO digimon.sys_setting(id, name, value, updated_at, updated_by) VALUES (2, 'db_version', '1.00.00', current_timestamp, 'digimon_system');
+INSERT INTO digimon.sys_setting(id, name, value, updated_at, updated_by) VALUES (3, 'db_status', 'success', current_timestamp, 'digimon_system');
+
+SELECT setval('digimon.sys_setting_seq', (SELECT MAX(id) FROM digimon.sys_setting));
 
 CREATE SEQUENCE IF NOT EXISTS digimon.duel_seq START 1;
 

@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static org.example.digimon.constants.GroupDictionaryConstants.*;
+import static org.example.digimon.constants.dictionary.groupDictionary.GroupDictionaryEndPointConstants.*;
+import static org.example.digimon.constants.endPointConstants.EndPointConstants.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,22 +24,22 @@ public class GroupDictionaryController {
     private final SearchGroupDictionaryUseCase searchGroupDictionaryUseCase;
     private final GroupDictionaryDtoMapper groupDictionaryDtoMapper;
 
-    @GetMapping(API_GROUP_DICTIONARY_FIND_BY_ID)
+    @GetMapping(API_FIND_BY_ID)
     public GroupDictionaryDtoOut findById(@PathVariable("id") Long id) {
         return groupDictionaryDtoMapper.toDtoOut(searchGroupDictionaryUseCase.findById(id));
     }
 
-    @GetMapping(API_GROUP_DICTIONARY_FIND_ALL)
+    @GetMapping(API_FIND_ALL)
     public List<GroupDictionaryDtoOut> findAll() {
         return groupDictionaryDtoMapper.toDtoOut(searchGroupDictionaryUseCase.findAll());
     }
 
-    @PostMapping(API_GROUP_DICTIONARY_SAVE)
+    @PostMapping(API_SAVE)
     public GroupDictionaryDtoOut save(@RequestBody GroupDictionaryDtoIn dtoIn) {
         return groupDictionaryDtoMapper.toDtoOut(saveGroupDictionaryUseCase.save(groupDictionaryDtoMapper.fromDtoIn(dtoIn)));
     }
 
-    @GetMapping(API_GROUP_DICTIONARY_REMOVE_BY_ID)
+    @GetMapping(API_REMOVE_BY_ID)
     public void remove(@PathVariable("id") Long id) {
         removeGroupDictionaryUseCase.remove(id);
     }

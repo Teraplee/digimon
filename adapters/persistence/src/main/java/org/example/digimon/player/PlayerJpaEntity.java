@@ -1,13 +1,11 @@
 package org.example.digimon.player;
 
-import javax.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.example.digimon.digimon.DigimonJpaEntity;
-import org.example.digimon.duel.DuelJpaEntity;
 
+import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -48,11 +46,10 @@ public class PlayerJpaEntity {
     @Column(name = "updated_by")
     private String updatedBy;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(name = "players_digimon",
             joinColumns = @JoinColumn(name = "player_id"),
             inverseJoinColumns = @JoinColumn(name = "digimon_id"))
     private Set<DigimonJpaEntity> digimons;
-
 
 }
