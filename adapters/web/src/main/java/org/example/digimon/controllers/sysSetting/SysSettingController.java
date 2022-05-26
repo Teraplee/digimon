@@ -9,6 +9,7 @@ import org.example.digimon.dto.sysSetting.SysSettingDtoOut;
 import org.example.digimon.mappers.sysSetting.SysSettingDtoMapper;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static org.example.digimon.constants.endPointConstants.EndPointConstants.*;
@@ -36,7 +37,7 @@ public class SysSettingController {
     }
 
     @PostMapping(API_SAVE)
-    public SysSettingDtoOut save(@RequestBody SysSettingDtoIn dtoIn) {
+    public SysSettingDtoOut save(@Valid @RequestBody SysSettingDtoIn dtoIn) {
         return sysSettingDtoMapper.toDtoOut(saveSysSettingUseCase.save(sysSettingDtoMapper.fromDtoIn(dtoIn)));
     }
 

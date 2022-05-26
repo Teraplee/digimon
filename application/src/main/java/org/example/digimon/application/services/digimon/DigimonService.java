@@ -9,6 +9,7 @@ import org.example.digimon.application.ports.out.digimon.RemoveDigimonPort;
 import org.example.digimon.application.ports.out.digimon.SaveDigimonPort;
 import org.example.digimon.application.ports.out.digimon.SearchDigimonPort;
 import org.example.digimon.domain.digimon.Digimon;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,5 +40,10 @@ public class DigimonService implements RemoveDigimonUseCase, SaveDigimonUseCase,
     @Override
     public List<Digimon> findAll() {
         return searchDigimonPort.findAll();
+    }
+
+    @Override
+    public List<Digimon> findAll(Specification spec) {
+        return searchDigimonPort.findAll(spec);
     }
 }

@@ -30,7 +30,6 @@ public class Digimon {
     private String gender;
     private Date updatedAt;
     private String updatedBy;
-    private Set<Player> players;
     private Set<FamilyDictionary> families;
 
 }

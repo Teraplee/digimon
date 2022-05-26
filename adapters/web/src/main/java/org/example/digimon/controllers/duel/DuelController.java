@@ -9,6 +9,7 @@ import org.example.digimon.dto.duel.DuelDtoOut;
 import org.example.digimon.mappers.duel.DuelDtoMapper;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static org.example.digimon.constants.duel.DuelEndPointConstants.*;
@@ -35,7 +36,7 @@ public class DuelController {
     }
 
     @PostMapping(API_SAVE)
-    public DuelDtoOut save(@RequestBody DuelDtoIn dtoIn) {
+    public DuelDtoOut save(@Valid @RequestBody DuelDtoIn dtoIn) {
         return duelDtoMapper.toDtoOut(saveDuelUseCase.save(duelDtoMapper.fromDtoIn(dtoIn)));
     }
 

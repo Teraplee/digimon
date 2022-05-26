@@ -7,8 +7,11 @@ import org.example.digimon.application.ports.in.digimon.SearchDigimonUseCase;
 import org.example.digimon.dto.digimon.DigimonDtoIn;
 import org.example.digimon.dto.digimon.DigimonDtoOut;
 import org.example.digimon.mappers.digimon.DigimonDtoMapper;
+import org.example.digimon.specifications.digimon.DigimonSpec;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static org.example.digimon.constants.digimon.DigimonEndPointConstants.*;
@@ -34,8 +37,13 @@ public class DigimonController {
         return digimonDtoMapper.toDtoOut(searchDigimonUseCase.findAll());
     }
 
+    @GetMapping(value = API_FIND_ALL + "/by")
+    public List<DigimonDtoOut> findAll(DigimonSpec spec) {
+        return digimonDtoMapper.toDtoOut(searchDigimonUseCase.findAll(spec));
+    }
+
     @PostMapping(API_SAVE)
-    public DigimonDtoOut save(@RequestBody DigimonDtoIn dtoIn) {
+    public DigimonDtoOut save(@Valid @RequestBody DigimonDtoIn dtoIn) {
         return digimonDtoMapper.toDtoOut(saveDigimonUseCase.save(digimonDtoMapper.fromDtoIn(dtoIn)));
     }
 

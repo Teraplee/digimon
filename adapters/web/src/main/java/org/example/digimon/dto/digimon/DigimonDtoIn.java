@@ -6,11 +6,11 @@ import lombok.NoArgsConstructor;
 import org.example.digimon.dto.dictionary.classDictionary.ClassDictionaryDtoIn;
 import org.example.digimon.dto.dictionary.familyDictionary.FamilyDictionaryDtoIn;
 import org.example.digimon.dto.dictionary.groupDictionary.GroupDictionaryDtoIn;
-import org.example.digimon.dto.player.PlayerDtoIn;
 import org.example.digimon.dto.dictionary.typeDictionary.TypeDictionaryDtoIn;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Set;
 
 @Data
@@ -19,16 +19,26 @@ import java.util.Set;
 public class DigimonDtoIn implements Serializable {
 
     private Long id;
+    @NotNull
     private String name;
+    @NotNull
     private Double attack;
+    @NotNull
     private Double defence;
+    @NotNull
     private String level;
+    @NotNull
     private String imageUrl;
+    @NotNull
     private TypeDictionaryDtoIn typeDictionary;
+    @NotNull
     private ClassDictionaryDtoIn classDictionary;
+    @NotNull
     private GroupDictionaryDtoIn groupDictionary;
+    @NotNull
     private String gender;
-    private Set<PlayerDtoIn> players;
+    @NotNull
+    @Size(min = 1, max = 3, message = "families must be between 1 and 3")
     private Set<FamilyDictionaryDtoIn> families;
 
 }

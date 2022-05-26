@@ -9,6 +9,7 @@ import org.example.digimon.dto.settings.SettingsDtoOut;
 import org.example.digimon.mappers.settings.SettingsDtoMapper;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static org.example.digimon.constants.endPointConstants.EndPointConstants.*;
@@ -35,7 +36,7 @@ public class SettingsController {
     }
 
     @PostMapping(API_SAVE)
-    public SettingsDtoOut save(@RequestBody SettingsDtoIn dtoIn) {
+    public SettingsDtoOut save(@Valid @RequestBody SettingsDtoIn dtoIn) {
         return settingsDtoMapper.toDtoOut(saveSettingsUseCase.save(settingsDtoMapper.fromDtoIn(dtoIn)));
     }
 

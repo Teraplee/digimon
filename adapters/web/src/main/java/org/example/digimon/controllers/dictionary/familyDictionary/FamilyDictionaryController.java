@@ -9,6 +9,7 @@ import org.example.digimon.dto.dictionary.familyDictionary.FamilyDictionaryDtoOu
 import org.example.digimon.mappers.dictionary.familyDictionary.FamilyDictionaryDtoMapper;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static org.example.digimon.constants.dictionary.familyDictionary.FamilyDictionaryEndPointConstants.*;
@@ -35,7 +36,7 @@ public class FamilyDictionaryController {
     }
 
     @PostMapping(API_SAVE)
-    public FamilyDictionaryDtoOut save(@RequestBody FamilyDictionaryDtoIn dtoIn) {
+    public FamilyDictionaryDtoOut save(@Valid @RequestBody FamilyDictionaryDtoIn dtoIn) {
         return familyDictionaryDtoMapper.toDtoOut(saveFamilyDictionaryUseCase.save(familyDictionaryDtoMapper.fromDtoIn(dtoIn)));
     }
 

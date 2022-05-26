@@ -31,7 +31,6 @@ public class DigimonDtoOut implements Serializable {
     private String gender;
     private Date updatedAt;
     private String updatedBy;
-    private Set<PlayerDtoOut> players;
     private Set<FamilyDictionaryDtoOut> families;
 
 }

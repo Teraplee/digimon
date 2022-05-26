@@ -9,6 +9,7 @@ import org.example.digimon.dto.player.PlayerDtoOut;
 import org.example.digimon.mappers.player.PlayerDtoMapper;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static org.example.digimon.constants.endPointConstants.EndPointConstants.*;
@@ -35,7 +36,7 @@ public class PlayerController {
     }
 
     @PostMapping(API_SAVE)
-    public PlayerDtoOut save(@RequestBody PlayerDtoIn dtoIn) {
+    public PlayerDtoOut save(@Valid @RequestBody PlayerDtoIn dtoIn) {
         return playerDtoMapper.toDtoOut(savePlayerUseCase.save(playerDtoMapper.fromDtoIn(dtoIn)));
     }
 

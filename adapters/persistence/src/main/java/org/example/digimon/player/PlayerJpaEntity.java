@@ -5,7 +5,6 @@ import org.example.digimon.digimon.DigimonJpaEntity;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -46,7 +45,7 @@ public class PlayerJpaEntity {
     @Column(name = "updated_by")
     private String updatedBy;
 
-    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToMany
     @JoinTable(name = "players_digimon",
             joinColumns = @JoinColumn(name = "player_id"),
             inverseJoinColumns = @JoinColumn(name = "digimon_id"))

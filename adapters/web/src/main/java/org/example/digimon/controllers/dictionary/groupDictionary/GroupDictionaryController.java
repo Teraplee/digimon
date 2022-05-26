@@ -9,6 +9,7 @@ import org.example.digimon.dto.dictionary.groupDictionary.GroupDictionaryDtoOut;
 import org.example.digimon.mappers.dictionary.groupDictionary.GroupDictionaryDtoMapper;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static org.example.digimon.constants.dictionary.groupDictionary.GroupDictionaryEndPointConstants.*;
@@ -35,7 +36,7 @@ public class GroupDictionaryController {
     }
 
     @PostMapping(API_SAVE)
-    public GroupDictionaryDtoOut save(@RequestBody GroupDictionaryDtoIn dtoIn) {
+    public GroupDictionaryDtoOut save(@Valid @RequestBody GroupDictionaryDtoIn dtoIn) {
         return groupDictionaryDtoMapper.toDtoOut(saveGroupDictionaryUseCase.save(groupDictionaryDtoMapper.fromDtoIn(dtoIn)));
     }
 

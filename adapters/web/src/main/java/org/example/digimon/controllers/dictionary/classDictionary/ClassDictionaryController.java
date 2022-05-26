@@ -9,6 +9,7 @@ import org.example.digimon.dto.dictionary.classDictionary.ClassDictionaryDtoOut;
 import org.example.digimon.mappers.dictionary.classDictionary.ClassDictionaryDtoMapper;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static org.example.digimon.constants.dictionary.classDictionary.ClassDictionaryEndPointConstants.*;
@@ -35,7 +36,7 @@ public class ClassDictionaryController {
     }
 
     @PostMapping(API_SAVE)
-    public ClassDictionaryDtoOut save(@RequestBody ClassDictionaryDtoIn dtoIn) {
+    public ClassDictionaryDtoOut save(@Valid @RequestBody ClassDictionaryDtoIn dtoIn) {
         return classDictionaryDtoMapper.toDtoOut(saveClassDictionaryUseCase.save(classDictionaryDtoMapper.fromDtoIn(dtoIn)));
     }
 

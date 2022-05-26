@@ -1,6 +1,7 @@
 package org.example.digimon.dictionary.familyDictionary;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-public interface FamilyDictionaryJpaRepository extends JpaRepository<FamilyDictionaryJpaEntity, Long> {
+public interface FamilyDictionaryJpaRepository extends JpaRepository<FamilyDictionaryJpaEntity, Long>, JpaSpecificationExecutor<FamilyDictionaryJpaEntity> {
 }

@@ -29,7 +29,7 @@ public class DuelJpaEntity {
     @Column(name = "updated_by")
     private String updatedBy;
 
-    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToMany
     @JoinTable(name = "duel_players",
             joinColumns = @JoinColumn(name = "duel_id"),
             inverseJoinColumns = @JoinColumn(name = "player_id"))
