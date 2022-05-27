@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.example.digimon.domain.digimon.DigimonGenderEnum;
 import org.example.digimon.dto.dictionary.classDictionary.ClassDictionaryDtoOut;
 import org.example.digimon.dto.dictionary.familyDictionary.FamilyDictionaryDtoOut;
 import org.example.digimon.dto.dictionary.groupDictionary.GroupDictionaryDtoOut;
@@ -28,7 +29,7 @@ public class DigimonDtoOut implements Serializable {
     private TypeDictionaryDtoOut typeDictionary;
     private ClassDictionaryDtoOut classDictionary;
     private GroupDictionaryDtoOut groupDictionary;
-    private String gender;
+    private DigimonGenderEnum gender;
     private Date updatedAt;
     private String updatedBy;
     private Set<FamilyDictionaryDtoOut> families;

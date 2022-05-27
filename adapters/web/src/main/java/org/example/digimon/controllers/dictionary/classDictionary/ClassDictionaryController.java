@@ -7,6 +7,7 @@ import org.example.digimon.application.ports.in.dictionary.classDictionary.Searc
 import org.example.digimon.dto.dictionary.classDictionary.ClassDictionaryDtoIn;
 import org.example.digimon.dto.dictionary.classDictionary.ClassDictionaryDtoOut;
 import org.example.digimon.mappers.dictionary.classDictionary.ClassDictionaryDtoMapper;
+import org.example.digimon.specifications.dictionary.classDictionary.ClassDictionarySpec;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -33,6 +34,11 @@ public class ClassDictionaryController {
     @GetMapping(API_FIND_ALL)
     public List<ClassDictionaryDtoOut> findAll() {
         return classDictionaryDtoMapper.toDtoOut(searchClassDictionaryUseCase.findAll());
+    }
+
+    @GetMapping(API_FIND_ALL_BY)
+    public List<ClassDictionaryDtoOut> findAll(ClassDictionarySpec spec) {
+        return classDictionaryDtoMapper.toDtoOut(searchClassDictionaryUseCase.findAll(spec));
     }
 
     @PostMapping(API_SAVE)

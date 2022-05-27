@@ -8,6 +8,7 @@ import org.example.digimon.application.ports.out.dictionary.groupDictionary.Remo
 import org.example.digimon.application.ports.out.dictionary.groupDictionary.SaveGroupDictionaryPort;
 import org.example.digimon.application.ports.out.dictionary.groupDictionary.SearchGroupDictionaryPort;
 import org.example.digimon.domain.dictionary.groupDictionary.GroupDictionary;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,5 +39,10 @@ public class GroupDictionaryService implements RemoveGroupDictionaryUseCase, Sav
     @Override
     public List<GroupDictionary> findAll() {
         return searchGroupDictionaryPort.findAll();
+    }
+
+    @Override
+    public List<GroupDictionary> findAll(Specification spec) {
+        return searchGroupDictionaryPort.findAll(spec);
     }
 }

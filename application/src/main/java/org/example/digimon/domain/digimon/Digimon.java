@@ -27,7 +27,7 @@ public class Digimon {
     private TypeDictionary typeDictionary;
     private ClassDictionary classDictionary;
     private GroupDictionary groupDictionary;
-    private String gender;
+    private DigimonGenderEnum gender;
     private Date updatedAt;
     private String updatedBy;
     private Set<FamilyDictionary> families;

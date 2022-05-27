@@ -7,6 +7,7 @@ import org.example.digimon.application.ports.in.duel.SearchDuelUseCase;
 import org.example.digimon.dto.duel.DuelDtoIn;
 import org.example.digimon.dto.duel.DuelDtoOut;
 import org.example.digimon.mappers.duel.DuelDtoMapper;
+import org.example.digimon.specifications.duel.DuelSpec;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -33,6 +34,11 @@ public class DuelController {
     @GetMapping(API_FIND_ALL)
     public List<DuelDtoOut> findAll() {
         return duelDtoMapper.toDtoOut(searchDuelUseCase.findAll());
+    }
+
+    @GetMapping(API_FIND_ALL_BY)
+    public List<DuelDtoOut> findAll(DuelSpec spec) {
+        return duelDtoMapper.toDtoOut(searchDuelUseCase.findAll(spec));
     }
 
     @PostMapping(API_SAVE)

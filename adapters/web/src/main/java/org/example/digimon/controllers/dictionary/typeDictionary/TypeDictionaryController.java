@@ -7,6 +7,7 @@ import org.example.digimon.application.ports.in.dictionary.typeDictionary.Search
 import org.example.digimon.dto.dictionary.typeDictionary.TypeDictionaryDtoIn;
 import org.example.digimon.dto.dictionary.typeDictionary.TypeDictionaryDtoOut;
 import org.example.digimon.mappers.dictionary.typeDictionary.TypeDictionaryDtoMapper;
+import org.example.digimon.specifications.dictionary.typeDictionary.TypeDictionarySpec;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -33,6 +34,11 @@ public class TypeDictionaryController {
     @GetMapping(API_FIND_ALL)
     public List<TypeDictionaryDtoOut> findAll() {
         return typeDictionaryDtoMapper.toDtoOut(searchTypeDictionaryUseCase.findAll());
+    }
+
+    @GetMapping(API_FIND_ALL_BY)
+    public List<TypeDictionaryDtoOut> findAll(TypeDictionarySpec spec) {
+        return typeDictionaryDtoMapper.toDtoOut(searchTypeDictionaryUseCase.findAll(spec));
     }
 
     @PostMapping(API_SAVE)

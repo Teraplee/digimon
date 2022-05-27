@@ -8,6 +8,7 @@ import org.example.digimon.application.ports.out.dictionary.typeDictionary.Remov
 import org.example.digimon.application.ports.out.dictionary.typeDictionary.SaveTypeDictionaryPort;
 import org.example.digimon.application.ports.out.dictionary.typeDictionary.SearchTypeDictionaryPort;
 import org.example.digimon.domain.dictionary.typeDictionary.TypeDictionary;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,5 +39,10 @@ public class TypeDictionaryService implements RemoveTypeDictionaryUseCase, SaveT
     @Override
     public List<TypeDictionary> findAll() {
         return searchTypeDictionaryPort.findAll();
+    }
+
+    @Override
+    public List<TypeDictionary> findAll(Specification spec) {
+        return searchTypeDictionaryPort.findAll(spec);
     }
 }

@@ -5,6 +5,7 @@ import org.example.digimon.application.ports.out.dictionary.typeDictionary.Remov
 import org.example.digimon.application.ports.out.dictionary.typeDictionary.SaveTypeDictionaryPort;
 import org.example.digimon.application.ports.out.dictionary.typeDictionary.SearchTypeDictionaryPort;
 import org.example.digimon.domain.dictionary.typeDictionary.TypeDictionary;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,6 +51,16 @@ public class TypeDictionaryPersistenceAdapter implements RemoveTypeDictionaryPor
     public List<TypeDictionary> findAll() {
         try {
             return typeDictionaryJpaMapper.fromJpaEntity(typeDictionaryJpaRepository.findAll());
+        } catch (Exception e) {
+            System.out.println("Exception: " + e.getMessage());
+            return null;
+        }
+    }
+
+    @Override
+    public List<TypeDictionary> findAll(Specification spec) {
+        try {
+            return typeDictionaryJpaMapper.fromJpaEntity(typeDictionaryJpaRepository.findAll(spec));
         } catch (Exception e) {
             System.out.println("Exception: " + e.getMessage());
             return null;

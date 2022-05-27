@@ -7,6 +7,8 @@ import org.example.digimon.application.ports.in.player.SearchPlayerUseCase;
 import org.example.digimon.dto.player.PlayerDtoIn;
 import org.example.digimon.dto.player.PlayerDtoOut;
 import org.example.digimon.mappers.player.PlayerDtoMapper;
+import org.example.digimon.specifications.player.PlayerSpec;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -33,6 +35,11 @@ public class PlayerController {
     @GetMapping(API_FIND_ALL)
     public List<PlayerDtoOut> findAll() {
         return playerDtoMapper.toDtoOut(searchPlayerUseCase.findAll());
+    }
+
+    @GetMapping(API_FIND_ALL_BY)
+    public List<PlayerDtoOut> findAll(PlayerSpec spec) {
+        return playerDtoMapper.toDtoOut(searchPlayerUseCase.findAll(spec));
     }
 
     @PostMapping(API_SAVE)

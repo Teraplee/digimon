@@ -7,6 +7,7 @@ import org.example.digimon.application.ports.in.dictionary.groupDictionary.Searc
 import org.example.digimon.dto.dictionary.groupDictionary.GroupDictionaryDtoIn;
 import org.example.digimon.dto.dictionary.groupDictionary.GroupDictionaryDtoOut;
 import org.example.digimon.mappers.dictionary.groupDictionary.GroupDictionaryDtoMapper;
+import org.example.digimon.specifications.dictionary.groupDictionary.GroupDictionarySpec;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -33,6 +34,11 @@ public class GroupDictionaryController {
     @GetMapping(API_FIND_ALL)
     public List<GroupDictionaryDtoOut> findAll() {
         return groupDictionaryDtoMapper.toDtoOut(searchGroupDictionaryUseCase.findAll());
+    }
+
+    @GetMapping(API_FIND_ALL_BY)
+    public List<GroupDictionaryDtoOut> findAll(GroupDictionarySpec spec) {
+        return groupDictionaryDtoMapper.toDtoOut(searchGroupDictionaryUseCase.findAll(spec));
     }
 
     @PostMapping(API_SAVE)

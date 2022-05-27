@@ -7,6 +7,7 @@ import org.example.digimon.application.ports.in.dictionary.familyDictionary.Sear
 import org.example.digimon.dto.dictionary.familyDictionary.FamilyDictionaryDtoIn;
 import org.example.digimon.dto.dictionary.familyDictionary.FamilyDictionaryDtoOut;
 import org.example.digimon.mappers.dictionary.familyDictionary.FamilyDictionaryDtoMapper;
+import org.example.digimon.specifications.dictionary.familyDictionary.FamilyDictionarySpec;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -33,6 +34,11 @@ public class FamilyDictionaryController {
     @GetMapping(API_FIND_ALL)
     public List<FamilyDictionaryDtoOut> findAll() {
         return familyDictionaryDtoMapper.toDtoOut(searchFamilyDictionaryUseCase.findAll());
+    }
+
+    @GetMapping(API_FIND_ALL_BY)
+    public List<FamilyDictionaryDtoOut> findAll(FamilyDictionarySpec spec) {
+        return familyDictionaryDtoMapper.toDtoOut(searchFamilyDictionaryUseCase.findAll(spec));
     }
 
     @PostMapping(API_SAVE)

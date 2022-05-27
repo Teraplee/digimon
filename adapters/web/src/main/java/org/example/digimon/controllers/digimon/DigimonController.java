@@ -37,7 +37,7 @@ public class DigimonController {
         return digimonDtoMapper.toDtoOut(searchDigimonUseCase.findAll());
     }
 
-    @GetMapping(value = API_FIND_ALL + "/by")
+    @GetMapping(value = API_FIND_ALL_BY)
     public List<DigimonDtoOut> findAll(DigimonSpec spec) {
         return digimonDtoMapper.toDtoOut(searchDigimonUseCase.findAll(spec));
     }

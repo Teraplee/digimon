@@ -9,6 +9,7 @@ import org.example.digimon.application.ports.out.duel.RemoveDuelPort;
 import org.example.digimon.application.ports.out.duel.SaveDuelPort;
 import org.example.digimon.application.ports.out.duel.SearchDuelPort;
 import org.example.digimon.domain.duel.Duel;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,5 +40,10 @@ public class DuelService implements RemoveDuelUseCase, SaveDuelUseCase, SearchDu
     @Override
     public List<Duel> findAll() {
         return searchDuelPort.findAll();
+    }
+
+    @Override
+    public List<Duel> findAll(Specification spec) {
+        return searchDuelPort.findAll(spec);
     }
 }

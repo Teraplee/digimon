@@ -5,6 +5,7 @@ import org.example.digimon.application.ports.out.dictionary.groupDictionary.Remo
 import org.example.digimon.application.ports.out.dictionary.groupDictionary.SaveGroupDictionaryPort;
 import org.example.digimon.application.ports.out.dictionary.groupDictionary.SearchGroupDictionaryPort;
 import org.example.digimon.domain.dictionary.groupDictionary.GroupDictionary;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -51,6 +52,16 @@ public class GroupDictionaryPersistenceAdapter implements RemoveGroupDictionaryP
     public List<GroupDictionary> findAll() {
         try {
             return groupDictionaryJpaMapper.fromJpaEntity(groupDictionaryJpaRepository.findAll());
+        } catch (Exception e) {
+            System.out.println("Exception: " + e.getMessage());
+            return null;
+        }
+    }
+
+    @Override
+    public List<GroupDictionary> findAll(Specification spec) {
+        try {
+            return groupDictionaryJpaMapper.fromJpaEntity(groupDictionaryJpaRepository.findAll(spec));
         } catch (Exception e) {
             System.out.println("Exception: " + e.getMessage());
             return null;

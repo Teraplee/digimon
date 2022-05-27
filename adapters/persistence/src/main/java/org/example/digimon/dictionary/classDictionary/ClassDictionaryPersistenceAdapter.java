@@ -5,6 +5,7 @@ import org.example.digimon.application.ports.out.dictionary.classDictionary.Remo
 import org.example.digimon.application.ports.out.dictionary.classDictionary.SaveClassDictionaryPort;
 import org.example.digimon.application.ports.out.dictionary.classDictionary.SearchClassDictionaryPort;
 import org.example.digimon.domain.dictionary.classDictionary.ClassDictionary;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,6 +51,16 @@ public class ClassDictionaryPersistenceAdapter implements RemoveClassDictionaryP
     public List<ClassDictionary> findAll() {
         try {
             return classDictionaryJpaMapper.fromJpaEntity(classDictionaryJpaRepository.findAll());
+        } catch (Exception e) {
+            System.out.println("Exception: " + e.getMessage());
+            return null;
+        }
+    }
+
+    @Override
+    public List<ClassDictionary> findAll(Specification spec) {
+        try {
+            return classDictionaryJpaMapper.fromJpaEntity(classDictionaryJpaRepository.findAll(spec));
         } catch (Exception e) {
             System.out.println("Exception: " + e.getMessage());
             return null;

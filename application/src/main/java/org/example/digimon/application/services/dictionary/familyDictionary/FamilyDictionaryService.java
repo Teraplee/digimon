@@ -8,6 +8,7 @@ import org.example.digimon.application.ports.out.dictionary.familyDictionary.Rem
 import org.example.digimon.application.ports.out.dictionary.familyDictionary.SaveFamilyDictionaryPort;
 import org.example.digimon.application.ports.out.dictionary.familyDictionary.SearchFamilyDictionaryPort;
 import org.example.digimon.domain.dictionary.familyDictionary.FamilyDictionary;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,5 +39,10 @@ public class FamilyDictionaryService implements RemoveFamilyDictionaryUseCase, S
     @Override
     public List<FamilyDictionary> findAll() {
         return searchFamilyDictionaryPort.findAll();
+    }
+
+    @Override
+    public List<FamilyDictionary> findAll(Specification spec) {
+        return searchFamilyDictionaryPort.findAll(spec);
     }
 }

@@ -5,6 +5,7 @@ import org.example.digimon.application.ports.out.player.RemovePlayerPort;
 import org.example.digimon.application.ports.out.player.SavePlayerPort;
 import org.example.digimon.application.ports.out.player.SearchPlayerPort;
 import org.example.digimon.domain.player.Player;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -51,6 +52,16 @@ public class PlayerPersistenceAdapter implements RemovePlayerPort, SavePlayerPor
     public List<Player> findAll() {
         try {
             return playerJpaMapper.fromJpaEntity(playerJpaRepository.findAll());
+        } catch (Exception e) {
+            System.out.println("Exception: " + e.getMessage());
+            return null;
+        }
+    }
+
+    @Override
+    public List<Player> findAll(Specification spec) {
+        try {
+            return playerJpaMapper.fromJpaEntity(playerJpaRepository.findAll(spec));
         } catch (Exception e) {
             System.out.println("Exception: " + e.getMessage());
             return null;

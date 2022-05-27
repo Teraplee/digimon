@@ -1,15 +1,16 @@
 package org.example.digimon.digimon;
 
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import org.example.digimon.application.ports.out.digimon.RemoveDigimonPort;
 import org.example.digimon.application.ports.out.digimon.SaveDigimonPort;
 import org.example.digimon.application.ports.out.digimon.SearchDigimonPort;
 import org.example.digimon.domain.digimon.Digimon;
+import org.example.digimon.exceptions.DigimonException;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
@@ -38,14 +39,10 @@ public class DigimonPersistenceAdapter implements RemoveDigimonPort, SaveDigimon
         }
     }
 
+    @SneakyThrows
     @Override
     public Digimon findById(Long id) {
-        try {
-            return digimonJpaMapper.fromJpaEntity(digimonJpaRepository.findById(id).orElseThrow(NoSuchElementException::new));
-        } catch (Exception e) {
-            System.out.println("Exception: " + e.getMessage());
-            return null;
-        }
+        return digimonJpaMapper.fromJpaEntity(digimonJpaRepository.findById(id).orElseThrow(() -> new DigimonException("Error in findById with id: " + id)));
     }
 
     @Override

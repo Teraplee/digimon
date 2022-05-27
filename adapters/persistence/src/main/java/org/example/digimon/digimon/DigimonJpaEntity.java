@@ -8,6 +8,7 @@ import org.example.digimon.dictionary.classDictionary.ClassDictionaryJpaEntity;
 import org.example.digimon.dictionary.familyDictionary.FamilyDictionaryJpaEntity;
 import org.example.digimon.dictionary.groupDictionary.GroupDictionaryJpaEntity;
 import org.example.digimon.dictionary.typeDictionary.TypeDictionaryJpaEntity;
+import org.example.digimon.domain.digimon.DigimonGenderEnum;
 import org.example.digimon.player.PlayerJpaEntity;
 
 import java.util.Date;
@@ -52,7 +53,8 @@ public class DigimonJpaEntity {
     private GroupDictionaryJpaEntity groupDictionary;
 
     @Column(name = "gender")
-    private String gender;
+    @Enumerated(EnumType.STRING)
+    private DigimonGenderEnum gender;
 
     @Column(name = "updated_at")
     private Date updatedAt;

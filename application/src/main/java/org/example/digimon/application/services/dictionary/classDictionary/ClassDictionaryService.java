@@ -8,6 +8,7 @@ import org.example.digimon.application.ports.out.dictionary.classDictionary.Remo
 import org.example.digimon.application.ports.out.dictionary.classDictionary.SaveClassDictionaryPort;
 import org.example.digimon.application.ports.out.dictionary.classDictionary.SearchClassDictionaryPort;
 import org.example.digimon.domain.dictionary.classDictionary.ClassDictionary;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,5 +39,10 @@ public class ClassDictionaryService implements RemoveClassDictionaryUseCase, Sav
     @Override
     public List<ClassDictionary> findAll() {
         return searchClassDictionaryPort.findAll();
+    }
+
+    @Override
+    public List<ClassDictionary> findAll(Specification spec) {
+        return searchClassDictionaryPort.findAll(spec);
     }
 }

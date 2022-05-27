@@ -5,6 +5,7 @@ import org.example.digimon.application.ports.out.duel.RemoveDuelPort;
 import org.example.digimon.application.ports.out.duel.SaveDuelPort;
 import org.example.digimon.application.ports.out.duel.SearchDuelPort;
 import org.example.digimon.domain.duel.Duel;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,6 +51,16 @@ public class DuelPersistenceAdapter implements RemoveDuelPort, SaveDuelPort, Sea
     public List<Duel> findAll() {
         try {
             return duelJpaMapper.fromJpaEntity(duelJpaRepository.findAll());
+        } catch (Exception e) {
+            System.out.println("Exception: " + e.getMessage());
+            return null;
+        }
+    }
+
+    @Override
+    public List<Duel> findAll(Specification spec) {
+        try {
+            return duelJpaMapper.fromJpaEntity(duelJpaRepository.findAll(spec));
         } catch (Exception e) {
             System.out.println("Exception: " + e.getMessage());
             return null;

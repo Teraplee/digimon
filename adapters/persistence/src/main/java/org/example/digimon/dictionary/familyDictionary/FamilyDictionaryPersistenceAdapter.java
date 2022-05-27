@@ -5,6 +5,7 @@ import org.example.digimon.application.ports.out.dictionary.familyDictionary.Rem
 import org.example.digimon.application.ports.out.dictionary.familyDictionary.SaveFamilyDictionaryPort;
 import org.example.digimon.application.ports.out.dictionary.familyDictionary.SearchFamilyDictionaryPort;
 import org.example.digimon.domain.dictionary.familyDictionary.FamilyDictionary;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -51,6 +52,16 @@ public class FamilyDictionaryPersistenceAdapter implements RemoveFamilyDictionar
     public List<FamilyDictionary> findAll() {
         try {
             return familyDictionaryJpaMapper.fromJpaEntity(familyDictionaryJpaRepository.findAll());
+        } catch (Exception e) {
+            System.out.println("Exception: " + e.getMessage());
+            return null;
+        }
+    }
+
+    @Override
+    public List<FamilyDictionary> findAll(Specification spec) {
+        try {
+            return familyDictionaryJpaMapper.fromJpaEntity(familyDictionaryJpaRepository.findAll(spec));
         } catch (Exception e) {
             System.out.println("Exception: " + e.getMessage());
             return null;
