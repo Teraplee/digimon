@@ -66,4 +66,16 @@ public class DigimonPersistenceAdapter implements RemoveDigimonPort, SaveDigimon
             return null;
         }
     }
+
+    @Override
+    public List<Digimon> findAllByCustom(Specification spec) {
+        try {
+            final List<DigimonJpaEntity> digimonJpaEntities = digimonJpaRepository.findAll(spec);
+
+            return digimonJpaMapper.fromJpaEntity(digimonJpaEntities);
+        } catch (Exception e) {
+            System.out.println("Exception: " + e.getMessage());
+            return null;
+        }
+    }
 }

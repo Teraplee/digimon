@@ -46,4 +46,9 @@ public class DigimonService implements RemoveDigimonUseCase, SaveDigimonUseCase,
     public List<Digimon> findAll(Specification spec) {
         return searchDigimonPort.findAll(spec);
     }
+
+    @Override
+    public List<Digimon> findAllByCustom(Specification spec) {
+        return searchDigimonPort.findAllByCustom(spec);
+    }
 }

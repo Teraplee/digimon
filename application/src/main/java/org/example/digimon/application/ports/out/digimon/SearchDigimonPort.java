@@ -13,4 +13,6 @@ public interface SearchDigimonPort {
 
     List<Digimon> findAll(Specification spec);
 
+    List<Digimon> findAllByCustom(Specification spec);
+
 }
