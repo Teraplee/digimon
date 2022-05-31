@@ -4,7 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.example.digimon.application.ports.out.player.RemovePlayerPort;
 import org.example.digimon.application.ports.out.player.SavePlayerPort;
 import org.example.digimon.application.ports.out.player.SearchPlayerPort;
+import org.example.digimon.digimon.DigimonJpaEntity;
 import org.example.digimon.domain.player.Player;
+import org.example.digimon.exceptions.AppException;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +39,13 @@ public class PlayerPersistenceAdapter implements RemovePlayerPort, SavePlayerPor
             return null;
         }
     }
+
+    //@Override
+    //public Player addDigimon(Long player_id, Long digimon_id) {
+    //    PlayerJpaEntity playerJpaEntity = playerJpaRepository.findById(player_id).orElseThrow(() ->
+    //            new AppException("Error in Player addDigimon(Long player_id, Long digimon_id). player_id: " + player_id));
+    //    DigimonJpaEntity digimonJpaEntity =
+    //}
 
     @Override
     public Player findById(Long id) {

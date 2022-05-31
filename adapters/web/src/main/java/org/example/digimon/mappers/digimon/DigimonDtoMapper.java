@@ -4,10 +4,10 @@ import org.example.digimon.domain.digimon.Digimon;
 import org.example.digimon.dto.digimon.DigimonDtoIn;
 import org.example.digimon.dto.digimon.DigimonDtoOut;
 import org.example.digimon.mappers.DtoMapper;
-import org.example.digimon.mappers.dictionary.classDictionary.ClassDictionaryDtoMapper;
-import org.example.digimon.mappers.dictionary.familyDictionary.FamilyDictionaryDtoMapper;
-import org.example.digimon.mappers.dictionary.groupDictionary.GroupDictionaryDtoMapper;
-import org.example.digimon.mappers.dictionary.typeDictionary.TypeDictionaryDtoMapper;
+import org.example.digimon.mappers.dictionary.classdictionary.ClassDictionaryDtoMapper;
+import org.example.digimon.mappers.dictionary.familydictionary.FamilyDictionaryDtoMapper;
+import org.example.digimon.mappers.dictionary.groupdictionary.GroupDictionaryDtoMapper;
+import org.example.digimon.mappers.dictionary.typedictionary.TypeDictionaryDtoMapper;
 import org.mapstruct.*;
 
 @Mapper(componentModel = "spring", uses = {TypeDictionaryDtoMapper.class, ClassDictionaryDtoMapper.class,

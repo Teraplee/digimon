@@ -4,10 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.example.digimon.domain.digimon.DigimonGenderEnum;
-import org.example.digimon.dto.dictionary.classDictionary.ClassDictionaryDtoIn;
-import org.example.digimon.dto.dictionary.familyDictionary.FamilyDictionaryDtoIn;
-import org.example.digimon.dto.dictionary.groupDictionary.GroupDictionaryDtoIn;
-import org.example.digimon.dto.dictionary.typeDictionary.TypeDictionaryDtoIn;
+import org.example.digimon.dto.dictionary.classdictionary.ClassDictionaryDtoIn;
+import org.example.digimon.dto.dictionary.familydictionary.FamilyDictionaryDtoIn;
+import org.example.digimon.dto.dictionary.groupdictionary.GroupDictionaryDtoIn;
+import org.example.digimon.dto.dictionary.typedictionary.TypeDictionaryDtoIn;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

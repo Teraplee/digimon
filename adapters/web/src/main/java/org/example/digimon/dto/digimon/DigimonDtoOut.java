@@ -3,13 +3,11 @@ package org.example.digimon.dto.digimon;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.example.digimon.domain.digimon.DigimonGenderEnum;
-import org.example.digimon.dto.dictionary.classDictionary.ClassDictionaryDtoOut;
-import org.example.digimon.dto.dictionary.familyDictionary.FamilyDictionaryDtoOut;
-import org.example.digimon.dto.dictionary.groupDictionary.GroupDictionaryDtoOut;
-import org.example.digimon.dto.player.PlayerDtoOut;
-import org.example.digimon.dto.dictionary.typeDictionary.TypeDictionaryDtoOut;
+import org.example.digimon.dto.dictionary.classdictionary.ClassDictionaryDtoOut;
+import org.example.digimon.dto.dictionary.familydictionary.FamilyDictionaryDtoOut;
+import org.example.digimon.dto.dictionary.groupdictionary.GroupDictionaryDtoOut;
+import org.example.digimon.dto.dictionary.typedictionary.TypeDictionaryDtoOut;
 
 import java.io.Serializable;
 import java.util.Date;

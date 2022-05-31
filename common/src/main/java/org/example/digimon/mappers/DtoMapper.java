@@ -1,5 +1,7 @@
 package org.example.digimon.mappers;
 
+import org.springframework.data.domain.Page;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -32,6 +34,23 @@ public interface DtoMapper<DtoIn, Entity, DtoOut> {
                                 .collect(Collectors.toList())
                 )
                 .orElse(Collections.EMPTY_LIST);
+    }
+
+    default Page<DtoOut> toDtoOut(Page<Entity> entities) {
+        return Optional
+                .ofNullable(entities)
+                .map(e -> e.map(this::toDtoOut))
+                .orElse(Page.empty());
+    }
+
+    default Iterable<DtoOut> toDtoOut(Iterable<Entity> entities) {
+        if (entities instanceof Page) {
+            return toDtoOut((Page<Entity>) entities);
+        } else if (entities instanceof Collection) {
+            return toDtoOut((Collection<Entity>) entities);
+        } else {
+            return null;
+        }
     }
 
 }

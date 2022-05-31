@@ -3,19 +3,19 @@ package org.example.digimon.digimon;
 import java.util.HashSet;
 import java.util.Set;
 import javax.annotation.processing.Generated;
-import org.example.digimon.dictionary.classDictionary.ClassDictionaryJpaMapper;
-import org.example.digimon.dictionary.familyDictionary.FamilyDictionaryJpaEntity;
-import org.example.digimon.dictionary.familyDictionary.FamilyDictionaryJpaMapper;
-import org.example.digimon.dictionary.groupDictionary.GroupDictionaryJpaMapper;
-import org.example.digimon.dictionary.typeDictionary.TypeDictionaryJpaMapper;
-import org.example.digimon.domain.dictionary.familyDictionary.FamilyDictionary;
+import org.example.digimon.dictionary.classdictionary.ClassDictionaryJpaMapper;
+import org.example.digimon.dictionary.familydictionary.FamilyDictionaryJpaEntity;
+import org.example.digimon.dictionary.familydictionary.FamilyDictionaryJpaMapper;
+import org.example.digimon.dictionary.groupdictionary.GroupDictionaryJpaMapper;
+import org.example.digimon.dictionary.typedictionary.TypeDictionaryJpaMapper;
+import org.example.digimon.domain.dictionary.familydictionary.FamilyDictionary;
 import org.example.digimon.domain.digimon.Digimon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-27T17:36:41+0300",
+    date = "2022-05-31T21:39:11+0300",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.4.jar, environment: Java 17.0.3.1 (Oracle Corporation)"
 )
 @Component

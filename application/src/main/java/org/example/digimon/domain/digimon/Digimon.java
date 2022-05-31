@@ -4,11 +4,10 @@ package org.example.digimon.domain.digimon;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.example.digimon.domain.dictionary.classDictionary.ClassDictionary;
-import org.example.digimon.domain.dictionary.familyDictionary.FamilyDictionary;
-import org.example.digimon.domain.dictionary.groupDictionary.GroupDictionary;
-import org.example.digimon.domain.dictionary.typeDictionary.TypeDictionary;
-import org.example.digimon.domain.player.Player;
+import org.example.digimon.domain.dictionary.classdictionary.ClassDictionary;
+import org.example.digimon.domain.dictionary.familydictionary.FamilyDictionary;
+import org.example.digimon.domain.dictionary.groupdictionary.GroupDictionary;
+import org.example.digimon.domain.dictionary.typedictionary.TypeDictionary;
 
 import java.util.Date;
 import java.util.Set;

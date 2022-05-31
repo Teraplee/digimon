@@ -1,10 +1,10 @@
 package org.example.digimon.digimon;
 
-import org.example.digimon.dictionary.classDictionary.ClassDictionaryJpaMapper;
+import org.example.digimon.dictionary.classdictionary.ClassDictionaryJpaMapper;
 import org.example.digimon.domain.digimon.Digimon;
-import org.example.digimon.dictionary.familyDictionary.FamilyDictionaryJpaMapper;
-import org.example.digimon.dictionary.groupDictionary.GroupDictionaryJpaMapper;
-import org.example.digimon.dictionary.typeDictionary.TypeDictionaryJpaMapper;
+import org.example.digimon.dictionary.familydictionary.FamilyDictionaryJpaMapper;
+import org.example.digimon.dictionary.groupdictionary.GroupDictionaryJpaMapper;
+import org.example.digimon.dictionary.typedictionary.TypeDictionaryJpaMapper;
 import org.example.digimon.mappers.AutoJpaMapper;
 import org.mapstruct.*;
 

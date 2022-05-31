@@ -33,6 +33,11 @@ public class PlayerService implements RemovePlayerUseCase, SavePlayerUseCase, Se
         return savePlayerPort.save(player);
     }
 
+    //@Override
+    //public Player addDigimon(Long player_id, Long digimon_id) {
+    //    return savePlayerPort.addDigimon(player_id, digimon_id);
+    //}
+
     @Override
     public Player findById(@NonNull final Long id) {
         return searchPlayerPort.findById(id);

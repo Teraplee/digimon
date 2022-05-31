@@ -1,5 +1,7 @@
 package org.example.digimon.mappers;
 
+import org.springframework.data.domain.Page;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -16,7 +18,7 @@ public interface JpaMapper<Entity, Domain> {
         return null;
     }
 
-    default List<Entity> toJpaEntity(final Collection<Domain> entities){
+    default List<Entity> toJpaEntity(final Collection<Domain> entities) {
         return Optional
                 .ofNullable(entities)
                 .map(
@@ -27,7 +29,7 @@ public interface JpaMapper<Entity, Domain> {
                 .orElse(Collections.EMPTY_LIST);
     }
 
-    default List<Domain> fromJpaEntity(final Collection<Entity> jpaEntities){
+    default List<Domain> fromJpaEntity(final Collection<Entity> jpaEntities) {
         return Optional
                 .ofNullable(jpaEntities)
                 .map(
@@ -36,6 +38,17 @@ public interface JpaMapper<Entity, Domain> {
                                 .collect(Collectors.toList())
                 )
                 .orElse(Collections.EMPTY_LIST);
+    }
+
+    default Page<Domain> fromJpaEntity(final Page<Entity> jpaEntities) {
+        return Optional
+                .ofNullable(jpaEntities)
+                .map(e -> e.map(this::fromJpaEntity))
+                .orElse(Page.empty());
+    }
+
+    default Optional<Domain> fromJpaEntity(final Optional<Entity> optional) {
+        return optional.map(this::fromJpaEntity);
     }
 
 }

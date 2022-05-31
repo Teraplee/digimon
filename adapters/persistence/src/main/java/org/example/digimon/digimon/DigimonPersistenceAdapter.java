@@ -6,7 +6,9 @@ import org.example.digimon.application.ports.out.digimon.RemoveDigimonPort;
 import org.example.digimon.application.ports.out.digimon.SaveDigimonPort;
 import org.example.digimon.application.ports.out.digimon.SearchDigimonPort;
 import org.example.digimon.domain.digimon.Digimon;
-import org.example.digimon.exceptions.DigimonException;
+import org.example.digimon.exceptions.AppException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -21,61 +23,51 @@ public class DigimonPersistenceAdapter implements RemoveDigimonPort, SaveDigimon
 
     @Override
     public void remove(Long id) {
-        try {
-            digimonJpaRepository.deleteById(id);
-        } catch (Exception e) {
-            System.out.println("Exception: " + e.getMessage());
+        if (id == null) {
+            throw new AppException("id cannot be null");
         }
+        digimonJpaRepository.deleteById(id);
     }
 
     @Override
     public Digimon save(Digimon digimon) {
-        try {
-            return digimonJpaMapper.fromJpaEntity(digimonJpaRepository.save(digimonJpaMapper.toJpaEntity(digimon)));
+        if (digimon == null) {
+            throw new AppException("digimon cannot be null");
         }
-        catch (Exception e) {
-            System.out.println("Exception: " + e.getMessage());
-            return null;
-        }
+        final DigimonJpaEntity digimonJpaEntity = digimonJpaRepository.save(digimonJpaMapper.toJpaEntity(digimon));
+
+        return digimonJpaMapper.fromJpaEntity(digimonJpaEntity);
     }
 
     @SneakyThrows
     @Override
     public Digimon findById(Long id) {
-        return digimonJpaMapper.fromJpaEntity(digimonJpaRepository.findById(id).orElseThrow(() -> new DigimonException("Error in findById with id: " + id)));
+        if (id == null) {
+            throw new AppException("id cannot be null");
+        }
+        return digimonJpaMapper.fromJpaEntity(digimonJpaRepository.findById(id).orElseThrow(() -> new AppException("Digimon not found exception. " +
+                "Digimon with id: " + id + " not found")));
     }
 
     @Override
     public List<Digimon> findAll() {
-        try {
-            return digimonJpaMapper.fromJpaEntity(digimonJpaRepository.findAll());
-        } catch (Exception e) {
-            System.out.println("Exception: " + e.getMessage());
-            return null;
-        }
+         final List<DigimonJpaEntity> digimonJpaEntities = digimonJpaRepository.findAll();
+
+         return digimonJpaMapper.fromJpaEntity(digimonJpaEntities);
     }
 
     @Override
     public List<Digimon> findAll(Specification spec) {
-        try {
-            final List<DigimonJpaEntity> digimonJpaEntities = digimonJpaRepository.findAll(spec);
+        final List<DigimonJpaEntity> digimonJpaEntities = digimonJpaRepository.findAll(spec);
 
-            return digimonJpaMapper.fromJpaEntity(digimonJpaEntities);
-        } catch (Exception e) {
-            System.out.println("Exception: " + e.getMessage());
-            return null;
-        }
+        return digimonJpaMapper.fromJpaEntity(digimonJpaEntities);
     }
 
     @Override
-    public List<Digimon> findAllByCustom(Specification spec) {
-        try {
-            final List<DigimonJpaEntity> digimonJpaEntities = digimonJpaRepository.findAll(spec);
+    public Page<Digimon> findAll(Specification spec, Pageable pageable) {
+        final Page<DigimonJpaEntity> digimonJpaEntities = digimonJpaRepository.findAll(spec, pageable);
 
-            return digimonJpaMapper.fromJpaEntity(digimonJpaEntities);
-        } catch (Exception e) {
-            System.out.println("Exception: " + e.getMessage());
-            return null;
-        }
+        return digimonJpaMapper.fromJpaEntity(digimonJpaEntities);
     }
+
 }

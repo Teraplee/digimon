@@ -6,4 +6,6 @@ public interface SavePlayerPort {
 
     Player save(Player player);
 
+    //Player addDigimon(Long player_id, Long digimon_id);
+
 }

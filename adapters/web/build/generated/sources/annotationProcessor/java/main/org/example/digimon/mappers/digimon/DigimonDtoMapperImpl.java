@@ -3,22 +3,22 @@ package org.example.digimon.mappers.digimon;
 import java.util.HashSet;
 import java.util.Set;
 import javax.annotation.processing.Generated;
-import org.example.digimon.domain.dictionary.familyDictionary.FamilyDictionary;
+import org.example.digimon.domain.dictionary.familydictionary.FamilyDictionary;
 import org.example.digimon.domain.digimon.Digimon;
-import org.example.digimon.dto.dictionary.familyDictionary.FamilyDictionaryDtoIn;
-import org.example.digimon.dto.dictionary.familyDictionary.FamilyDictionaryDtoOut;
+import org.example.digimon.dto.dictionary.familydictionary.FamilyDictionaryDtoIn;
+import org.example.digimon.dto.dictionary.familydictionary.FamilyDictionaryDtoOut;
 import org.example.digimon.dto.digimon.DigimonDtoIn;
 import org.example.digimon.dto.digimon.DigimonDtoOut;
-import org.example.digimon.mappers.dictionary.classDictionary.ClassDictionaryDtoMapper;
-import org.example.digimon.mappers.dictionary.familyDictionary.FamilyDictionaryDtoMapper;
-import org.example.digimon.mappers.dictionary.groupDictionary.GroupDictionaryDtoMapper;
-import org.example.digimon.mappers.dictionary.typeDictionary.TypeDictionaryDtoMapper;
+import org.example.digimon.mappers.dictionary.classdictionary.ClassDictionaryDtoMapper;
+import org.example.digimon.mappers.dictionary.familydictionary.FamilyDictionaryDtoMapper;
+import org.example.digimon.mappers.dictionary.groupdictionary.GroupDictionaryDtoMapper;
+import org.example.digimon.mappers.dictionary.typedictionary.TypeDictionaryDtoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-27T17:36:47+0300",
+    date = "2022-05-31T21:39:23+0300",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.4.jar, environment: Java 17.0.3.1 (Oracle Corporation)"
 )
 @Component

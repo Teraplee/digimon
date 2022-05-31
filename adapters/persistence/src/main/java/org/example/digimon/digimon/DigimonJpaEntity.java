@@ -4,12 +4,11 @@ import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.example.digimon.dictionary.classDictionary.ClassDictionaryJpaEntity;
-import org.example.digimon.dictionary.familyDictionary.FamilyDictionaryJpaEntity;
-import org.example.digimon.dictionary.groupDictionary.GroupDictionaryJpaEntity;
-import org.example.digimon.dictionary.typeDictionary.TypeDictionaryJpaEntity;
+import org.example.digimon.dictionary.classdictionary.ClassDictionaryJpaEntity;
+import org.example.digimon.dictionary.familydictionary.FamilyDictionaryJpaEntity;
+import org.example.digimon.dictionary.groupdictionary.GroupDictionaryJpaEntity;
+import org.example.digimon.dictionary.typedictionary.TypeDictionaryJpaEntity;
 import org.example.digimon.domain.digimon.DigimonGenderEnum;
-import org.example.digimon.player.PlayerJpaEntity;
 
 import java.util.Date;
 import java.util.Set;

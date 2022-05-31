@@ -8,6 +8,7 @@ $$
         --
         ALTER TABLE IF EXISTS digimon.duel ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP;
         ALTER TABLE IF EXISTS digimon.duel ADD COLUMN IF NOT EXISTS updated_by VARCHAR;
+        ALTER TABLE IF EXISTS digimon.players ADD CONSTRAINT unique_username UNIQUE (username);
 
         CREATE TRIGGER duel_updated_trigger
             BEFORE INSERT OR UPDATE ON digimon.duel
