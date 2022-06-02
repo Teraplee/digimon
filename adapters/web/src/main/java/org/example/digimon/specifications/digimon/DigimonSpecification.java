@@ -2,27 +2,15 @@ package org.example.digimon.specifications.digimon;
 
 import org.springframework.data.jpa.domain.Specification;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class DigimonSpecification {
 
-    public static Specification between(final Date dateFrom, final Date dateTo) {
-        //if (dateFrom != null && dateTo != null) {
-        //    return (root, query, cb) -> cb.and(cb.greaterThanOrEqualTo(root.get("updatedAt"), dateFrom),
-        //            cb.lessThanOrEqualTo(root.get("updatedAt"), dateTo));
-        //} else if (dateFrom != null) {
-        //    return (root, query, cb) -> cb.greaterThanOrEqualTo(root.get("updatedAt"), dateFrom);
-        //} else if (dateTo != null) {
-        //    return (root, query, cb) -> cb.lessThanOrEqualTo(root.get("updatedAt"), dateTo);
-        //} else {
-        //    return null;
-        //}
-
-        return (dateFrom != null && dateTo != null) ?
-                ((root, query, cb) -> cb.and(cb.greaterThanOrEqualTo(root.get("updatedAt"), dateFrom), cb.lessThanOrEqualTo(root.get("updatedAt"), dateTo)))
+    public static Specification between(final LocalDate dateFrom, final LocalDate dateTo) {
+        return (dateFrom != null && dateTo != null)
+                ? ((root, query, cb) -> cb.and(cb.greaterThanOrEqualTo(root.get("updatedAt"), dateFrom), cb.lessThanOrEqualTo(root.get("updatedAt"), dateTo)))
                 : ((dateFrom != null) ? ((root, query, cb) -> cb.greaterThanOrEqualTo(root.get("updatedAt"), dateFrom))
                 : ((dateTo != null) ? ((root, query, cb) -> cb.lessThanOrEqualTo(root.get("updatedAt"), dateTo)) : null));
-
     }
 
     public static Specification attackGreatestThan(final Double attack) {

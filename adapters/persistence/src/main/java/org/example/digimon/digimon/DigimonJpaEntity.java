@@ -10,7 +10,7 @@ import org.example.digimon.dictionary.groupdictionary.GroupDictionaryJpaEntity;
 import org.example.digimon.dictionary.typedictionary.TypeDictionaryJpaEntity;
 import org.example.digimon.domain.digimon.DigimonGenderEnum;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Set;
 
 @Data
@@ -56,7 +56,7 @@ public class DigimonJpaEntity {
     private DigimonGenderEnum gender;
 
     @Column(name = "updated_at")
-    private Date updatedAt;
+    private LocalDate updatedAt;
 
     @Column(name = "updated_by")
     private String updatedBy;

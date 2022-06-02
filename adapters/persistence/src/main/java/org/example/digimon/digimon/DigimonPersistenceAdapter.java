@@ -1,7 +1,6 @@
 package org.example.digimon.digimon;
 
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import org.example.digimon.application.ports.out.digimon.RemoveDigimonPort;
 import org.example.digimon.application.ports.out.digimon.SaveDigimonPort;
 import org.example.digimon.application.ports.out.digimon.SearchDigimonPort;
@@ -39,14 +38,13 @@ public class DigimonPersistenceAdapter implements RemoveDigimonPort, SaveDigimon
         return digimonJpaMapper.fromJpaEntity(digimonJpaEntity);
     }
 
-    @SneakyThrows
     @Override
     public Digimon findById(Long id) {
         if (id == null) {
             throw new AppException("id cannot be null");
         }
-        return digimonJpaMapper.fromJpaEntity(digimonJpaRepository.findById(id).orElseThrow(() -> new AppException("Digimon not found exception. " +
-                "Digimon with id: " + id + " not found")));
+        return digimonJpaMapper.fromJpaEntity(digimonJpaRepository.findById(id).orElseThrow(() ->
+                new AppException("Digimon with id: " + id + " not found")));
     }
 
     @Override

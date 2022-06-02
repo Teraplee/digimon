@@ -69,7 +69,7 @@ $$
             BEFORE INSERT OR UPDATE ON digimon.settings
             FOR EACH ROW EXECUTE PROCEDURE digimon.updated_trigger_function();
 
-        INSERT INTO digimon.settings(id, name, value, default_value, updated_at, updated_by) VALUES (1, 'system_user', 'system_user', 'system_user', current_timestamp, 'digimon_system');
+        INSERT INTO digimon.settings(id, name, value, default_value, updated_at, updated_by) VALUES (1, 'Системный пользователь', 'system_user', 'system_user', current_timestamp, 'digimon_system');
 
         ALTER SEQUENCE digimon.settings_seq RESTART WITH 2;
 

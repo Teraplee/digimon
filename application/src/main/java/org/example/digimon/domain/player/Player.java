@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.example.digimon.domain.digimon.Digimon;
-import org.example.digimon.domain.duel.Duel;
+import org.example.digimon.domain.role.Role;
 
 import java.util.Date;
 import java.util.Set;
@@ -25,5 +25,6 @@ public class Player {
     private Date updatedAt;
     private String updatedBy;
     private Set<Digimon> digimons;
+    private Set<Role> roles;
 
 }

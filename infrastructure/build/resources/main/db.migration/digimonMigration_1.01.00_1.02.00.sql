@@ -22,6 +22,32 @@ $$
         END
         $updated_trigger_function$ LANGUAGE plpgsql;
 
+        CREATE SEQUENCE IF NOT EXISTS digimon.roles_seq START 1;
+
+        CREATE TABLE IF NOT EXISTS digimon.roles
+        (
+            id            BIGINT PRIMARY KEY NOT NULL DEFAULT nextval('digimon.roles_seq'),
+            value         VARCHAR            NOT NULL,
+            updated_at    TIMESTAMP          NOT NULL,
+            updated_by    VARCHAR            NOT NULL
+        );
+
+        CREATE TRIGGER roles_updated_trigger
+            BEFORE INSERT OR UPDATE ON digimon.roles
+            FOR EACH ROW EXECUTE PROCEDURE digimon.updated_trigger_function();
+
+        INSERT INTO digimon.roles(id, value, updated_at, updated_by) VALUES (1, 'ROLE_USER', current_timestamp, 'digimon_system');
+
+        ALTER SEQUENCE digimon.roles_seq RESTART WITH 2;
+
+        CREATE TABLE IF NOT EXISTS digimon.players_roles
+        (
+          player_id BIGINT NOT NULL,
+          role_id   BIGINT NOT NULL,
+          FOREIGN KEY (player_id) REFERENCES digimon.players (id),
+          FOREIGN KEY (role_id) REFERENCES digimon.roles (id)
+        );
+
         UPDATE digimon.sys_setting SET value = current_timestamp WHERE name = 'last_db_modify';
         UPDATE digimon.sys_setting SET value = '1.02.00' WHERE name = 'db_version';
         UPDATE digimon.sys_setting SET value = 'success' WHERE name = 'db_status';

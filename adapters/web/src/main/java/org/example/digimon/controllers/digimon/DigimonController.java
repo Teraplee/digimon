@@ -15,7 +15,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.example.digimon.constants.digimon.DigimonEndPointConstants.*;
@@ -52,8 +53,8 @@ public class DigimonController {
 
     @GetMapping(value = API_FIND_BY_DATES)
     public Iterable<DigimonDtoOut> findByDates(Pageable pageable,
-                                               @DateTimeFormat(pattern = "yyyy-MM-dd") Date dateFrom,
-                                               @DateTimeFormat(pattern = "yyyy-MM-dd") Date dateTo) {
+                                               @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateFrom,
+                                               @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateTo) {
         Specification spec = Specification.where(DigimonSpecification.between(dateFrom, dateTo));
         return digimonDtoMapper.toDtoOut(
                 pageable.equals(Pageable.unpaged())

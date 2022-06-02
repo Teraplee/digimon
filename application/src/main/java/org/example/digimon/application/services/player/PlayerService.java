@@ -9,6 +9,8 @@ import org.example.digimon.application.ports.out.player.RemovePlayerPort;
 import org.example.digimon.application.ports.out.player.SavePlayerPort;
 import org.example.digimon.application.ports.out.player.SearchPlayerPort;
 import org.example.digimon.domain.player.Player;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -44,6 +46,11 @@ public class PlayerService implements RemovePlayerUseCase, SavePlayerUseCase, Se
     }
 
     @Override
+    public Player findByUsername(String username) {
+        return searchPlayerPort.findByUsername(username);
+    }
+
+    @Override
     public List<Player> findAll() {
         return searchPlayerPort.findAll();
     }
@@ -51,5 +58,10 @@ public class PlayerService implements RemovePlayerUseCase, SavePlayerUseCase, Se
     @Override
     public List<Player> findAll(Specification spec) {
         return searchPlayerPort.findAll(spec);
+    }
+
+    @Override
+    public Page<Player> findAll(Specification spec, Pageable pageable) {
+        return searchPlayerPort.findAll(spec, pageable);
     }
 }

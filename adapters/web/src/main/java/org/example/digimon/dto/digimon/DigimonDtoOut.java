@@ -10,7 +10,7 @@ import org.example.digimon.dto.dictionary.groupdictionary.GroupDictionaryDtoOut;
 import org.example.digimon.dto.dictionary.typedictionary.TypeDictionaryDtoOut;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Set;
 
 @Data
@@ -28,7 +28,7 @@ public class DigimonDtoOut implements Serializable {
     private ClassDictionaryDtoOut classDictionary;
     private GroupDictionaryDtoOut groupDictionary;
     private DigimonGenderEnum gender;
-    private Date updatedAt;
+    private LocalDate updatedAt;
     private String updatedBy;
     private Set<FamilyDictionaryDtoOut> families;
 

@@ -2,6 +2,7 @@ package org.example.digimon.player;
 
 import lombok.*;
 import org.example.digimon.digimon.DigimonJpaEntity;
+import org.example.digimon.role.RoleJpaEntity;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -45,10 +46,16 @@ public class PlayerJpaEntity {
     @Column(name = "updated_by")
     private String updatedBy;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "players_digimon",
             joinColumns = @JoinColumn(name = "player_id"),
             inverseJoinColumns = @JoinColumn(name = "digimon_id"))
     private Set<DigimonJpaEntity> digimons;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "players_roles",
+            joinColumns = @JoinColumn(name = "player_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<RoleJpaEntity> roles;
 
 }

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.example.digimon.dto.digimon.DigimonDtoIn;
+import org.example.digimon.dto.role.RoleDtoIn;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -33,5 +34,7 @@ public class PlayerDtoIn implements Serializable {
     @NotNull
     @Size(min = 1, max = 5, message = "digimons must be between 1 and 5")
     private Set<DigimonDtoIn> digimons;
+    @NotNull
+    private Set<RoleDtoIn> roles;
 
 }
