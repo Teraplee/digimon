@@ -57,7 +57,7 @@ public class DigimonController {
 
     @GetMapping(value = API_FIND_BY_DATES)
     public Iterable<DigimonDtoOut> findByDates(Pageable pageable, String dateFrom, String dateTo) {
-        ;
+
         Specification spec = Specification.where(DigimonSpecification.between(dateMapper.toLocalDate(dateFrom),
                 dateMapper.toLocalDate(dateTo)));
         return digimonDtoMapper.toDtoOut(
