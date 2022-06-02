@@ -8,13 +8,23 @@ import lombok.NonNull;
 @AllArgsConstructor
 public enum RoleEnum {
 
-    ROLE_USER("ROLE_USER");
+    ROLE_USER(1L, "ROLE_USER");
 
+    private final Long id;
     private final String value;
 
     public static RoleEnum findByValue(@NonNull String value) {
         for (RoleEnum role : values()) {
             if (role.name().equals(value)) {
+                return role;
+            }
+        }
+        return null;
+    }
+
+    public static RoleEnum findById(@NonNull Long id) {
+        for (RoleEnum role : values()) {
+            if (role.getId().equals(id)) {
                 return role;
             }
         }

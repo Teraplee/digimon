@@ -14,6 +14,7 @@ import java.time.LocalDate;
 public class RoleDtoOut implements Serializable {
 
     private Long id;
+    private String name;
     private RoleEnum roleEnum;
     private LocalDate updatedAt;
     private String updatedBy;

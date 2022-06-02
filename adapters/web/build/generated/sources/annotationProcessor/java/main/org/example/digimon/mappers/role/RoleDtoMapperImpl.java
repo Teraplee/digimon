@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-06-01T22:12:22+0300",
+    date = "2022-06-02T12:15:07+0300",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.4.jar, environment: Java 17.0.3.1 (Oracle Corporation)"
 )
 @Component
@@ -23,6 +23,7 @@ public class RoleDtoMapperImpl implements RoleDtoMapper {
         Role role = new Role();
 
         role.setId( arg0.getId() );
+        role.setName( arg0.getName() );
         role.setRoleEnum( arg0.getRoleEnum() );
 
         return role;
@@ -37,6 +38,7 @@ public class RoleDtoMapperImpl implements RoleDtoMapper {
         RoleDtoOut roleDtoOut = new RoleDtoOut();
 
         roleDtoOut.setId( arg0.getId() );
+        roleDtoOut.setName( arg0.getName() );
         roleDtoOut.setRoleEnum( arg0.getRoleEnum() );
         roleDtoOut.setUpdatedAt( arg0.getUpdatedAt() );
         roleDtoOut.setUpdatedBy( arg0.getUpdatedBy() );

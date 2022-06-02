@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-06-01T17:21:28+0300",
+    date = "2022-06-02T12:15:01+0300",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.4.jar, environment: Java 17.0.3.1 (Oracle Corporation)"
 )
 @Component
@@ -21,6 +21,7 @@ public class RoleJpaMapperImpl implements RoleJpaMapper {
         Role role = new Role();
 
         role.setId( arg0.getId() );
+        role.setName( arg0.getName() );
         role.setRoleEnum( arg0.getRoleEnum() );
         role.setUpdatedAt( arg0.getUpdatedAt() );
         role.setUpdatedBy( arg0.getUpdatedBy() );
@@ -37,6 +38,7 @@ public class RoleJpaMapperImpl implements RoleJpaMapper {
         RoleJpaEntity roleJpaEntity = new RoleJpaEntity();
 
         roleJpaEntity.setId( arg0.getId() );
+        roleJpaEntity.setName( arg0.getName() );
         roleJpaEntity.setRoleEnum( arg0.getRoleEnum() );
         roleJpaEntity.setUpdatedAt( arg0.getUpdatedAt() );
         roleJpaEntity.setUpdatedBy( arg0.getUpdatedBy() );

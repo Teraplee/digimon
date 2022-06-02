@@ -70,9 +70,13 @@ public class PlayerController {
             if (passwordEncoder.matches(request.getPassword(), playerDtoOut.getPassword())) {
                 String token = jwtProvider.generateToken(playerDtoOut.getUsername());
                 return new AuthResponse(token);
+            } else {
+                throw new AppException("password incorrect");
             }
+        } else {
+            throw new AppException("username incorrect");
         }
-        throw new AppException("Auth failed");
+
     }
 
     @GetMapping(API_REMOVE_BY_ID)

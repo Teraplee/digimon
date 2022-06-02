@@ -12,6 +12,7 @@ import java.time.LocalDate;
 public class Role {
 
     private Long id;
+    private String name;
     private RoleEnum roleEnum;
     private LocalDate updatedAt;
     private String updatedBy;

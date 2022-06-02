@@ -6,6 +6,7 @@ import org.example.digimon.application.ports.in.digimon.SaveDigimonUseCase;
 import org.example.digimon.application.ports.in.digimon.SearchDigimonUseCase;
 import org.example.digimon.dto.digimon.DigimonDtoIn;
 import org.example.digimon.dto.digimon.DigimonDtoOut;
+import org.example.digimon.mappers.DateMapper;
 import org.example.digimon.mappers.digimon.DigimonDtoMapper;
 import org.example.digimon.specifications.digimon.DigimonSpec;
 import org.example.digimon.specifications.digimon.DigimonSpecification;
@@ -32,6 +33,9 @@ public class DigimonController {
     private final SearchDigimonUseCase searchDigimonUseCase;
     private final DigimonDtoMapper digimonDtoMapper;
 
+    private DateMapper dateMapper = new DateMapper() {
+    };
+
     @GetMapping(API_FIND_BY_ID)
     public DigimonDtoOut findById(@PathVariable("id") Long id) {
         return digimonDtoMapper.toDtoOut(searchDigimonUseCase.findById(id));
@@ -52,10 +56,10 @@ public class DigimonController {
     }
 
     @GetMapping(value = API_FIND_BY_DATES)
-    public Iterable<DigimonDtoOut> findByDates(Pageable pageable,
-                                               @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateFrom,
-                                               @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateTo) {
-        Specification spec = Specification.where(DigimonSpecification.between(dateFrom, dateTo));
+    public Iterable<DigimonDtoOut> findByDates(Pageable pageable, String dateFrom, String dateTo) {
+        ;
+        Specification spec = Specification.where(DigimonSpecification.between(dateMapper.toLocalDate(dateFrom),
+                dateMapper.toLocalDate(dateTo)));
         return digimonDtoMapper.toDtoOut(
                 pageable.equals(Pageable.unpaged())
                         ? searchDigimonUseCase.findAll(spec)

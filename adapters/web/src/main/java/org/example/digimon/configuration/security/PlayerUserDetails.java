@@ -21,9 +21,9 @@ public class PlayerUserDetails implements UserDetails {
         PlayerUserDetails playerUserDetails = new PlayerUserDetails();
         playerUserDetails.username = player.getUsername();
         playerUserDetails.password = player.getPassword();
-        playerUserDetails.grantedAuthorities = Collections.singletonList(
+        playerUserDetails.grantedAuthorities = Collections.singleton(
                 new SimpleGrantedAuthority(player.getRoles()
-                        .stream().map(Role::getRoleEnum).findFirst().toString())); //get first role from set
+                        .stream().map(Role::getRoleEnum).findFirst().get().name())); //get first role from set
         return playerUserDetails;
     }
 

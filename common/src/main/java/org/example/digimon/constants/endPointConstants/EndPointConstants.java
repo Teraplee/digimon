@@ -2,6 +2,7 @@ package org.example.digimon.constants.endPointConstants;
 
 public class EndPointConstants {
 
+    public static final String API = "/api";
     public static final String API_FIND = "/find";
     public static final String API_ID = "/{id}";
     public static final String API_FIND_BY_ID = API_FIND + API_ID;

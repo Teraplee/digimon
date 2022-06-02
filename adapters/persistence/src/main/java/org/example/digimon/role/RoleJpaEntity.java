@@ -19,6 +19,9 @@ public class RoleJpaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "name")
+    private String name;
+
     @Column(name = "value")
     @Enumerated(EnumType.STRING)
     private RoleEnum roleEnum;

@@ -27,6 +27,7 @@ $$
         CREATE TABLE IF NOT EXISTS digimon.roles
         (
             id            BIGINT PRIMARY KEY NOT NULL DEFAULT nextval('digimon.roles_seq'),
+            name          VARCHAR            NOT NULL,
             value         VARCHAR            NOT NULL,
             updated_at    TIMESTAMP          NOT NULL,
             updated_by    VARCHAR            NOT NULL
@@ -36,7 +37,7 @@ $$
             BEFORE INSERT OR UPDATE ON digimon.roles
             FOR EACH ROW EXECUTE PROCEDURE digimon.updated_trigger_function();
 
-        INSERT INTO digimon.roles(id, value, updated_at, updated_by) VALUES (1, 'ROLE_USER', current_timestamp, 'digimon_system');
+        INSERT INTO digimon.roles(id, name, value, updated_at, updated_by) VALUES (1, 'Пользователь', 'ROLE_USER', current_timestamp, 'digimon_system');
 
         ALTER SEQUENCE digimon.roles_seq RESTART WITH 2;
 

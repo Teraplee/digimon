@@ -15,6 +15,8 @@ public class RoleDtoIn implements Serializable {
 
     private Long id;
     @NotNull
+    private String name;
+    @NotNull
     private RoleEnum roleEnum;
 
 }
